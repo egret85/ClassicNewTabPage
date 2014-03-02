@@ -1,5 +1,5 @@
 var DEFAULT_IMG = 'images/alpha.png';
-var IS_DEBUG_MODE = true;
+var IS_DEBUG_MODE = false;
 
 function log(logVar) {
     if (IS_DEBUG_MODE) {
