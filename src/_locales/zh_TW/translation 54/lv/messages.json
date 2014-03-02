@@ -1,0 +1,14 @@
+﻿{
+    "MSG_mostVisited": {
+        "message": "lielākā daļa apmeklētā"
+    },
+    "MSG_app": {
+        "message": "progr"
+    },
+    "MSG_recentlyClosed": {
+        "message": "Nesen slēgts"
+    },
+    "MSG_webStore": {
+        "message": "interneta veikals"
+    }
+}

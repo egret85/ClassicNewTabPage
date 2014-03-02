@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "aplikácie"
+   },
+   "MSG_mostVisited": {
+      "message": "najnavštevovanejšie"
+   },
+   "MSG_recentlyClosed": {
+      "message": "V poslednej dobe uzavretý"
+   },
+   "MSG_webStore": {
+      "message": "internetový obchod"
+   }
+}

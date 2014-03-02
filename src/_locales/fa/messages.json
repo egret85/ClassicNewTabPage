@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "برنامه ها"
+   },
+   "MSG_mostVisited": {
+      "message": "بیشترین بازدید"
+   },
+   "MSG_recentlyClosed": {
+      "message": "به تازگی بسته شده"
+   },
+   "MSG_webStore": {
+      "message": "فروشگاه وب"
+   }
+}

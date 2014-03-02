@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "אפליקציות"
+   },
+   "MSG_mostVisited": {
+      "message": "הפופולרי ביותר"
+   },
+   "MSG_recentlyClosed": {
+      "message": "נסגר לאחרונה"
+   },
+   "MSG_webStore": {
+      "message": "חנות האינטרנט של"
+   }
+}

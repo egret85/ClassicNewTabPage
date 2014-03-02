@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "एप्लिकेशन"
+   },
+   "MSG_mostVisited": {
+      "message": "सबसे अधिक देखे गए"
+   },
+   "MSG_recentlyClosed": {
+      "message": "हाल में बंद"
+   },
+   "MSG_webStore": {
+      "message": "वेब स्टोर"
+   }
+}

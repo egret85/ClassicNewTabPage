@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "додатки"
+   },
+   "MSG_mostVisited": {
+      "message": "Найбільш читаються"
+   },
+   "MSG_recentlyClosed": {
+      "message": "нещодавно закриті"
+   },
+   "MSG_webStore": {
+      "message": "Веб-магазин"
+   }
+}

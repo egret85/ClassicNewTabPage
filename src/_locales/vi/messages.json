@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "ứng dụng"
+   },
+   "MSG_mostVisited": {
+      "message": "truy cập nhiều nhất"
+   },
+   "MSG_recentlyClosed": {
+      "message": "đóng gần đây"
+   },
+   "MSG_webStore": {
+      "message": "Cửa hàng trực tuyến"
+   }
+}

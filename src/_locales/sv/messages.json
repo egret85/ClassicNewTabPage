@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "appar"
+   },
+   "MSG_mostVisited": {
+      "message": "Mest besökta"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Nyligen stängd"
+   },
+   "MSG_webStore": {
+      "message": "nätbutik"
+   }
+}

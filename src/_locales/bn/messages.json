@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "অ্যাপস"
+   },
+   "MSG_mostVisited": {
+      "message": "সর্বাধিক দেখা"
+   },
+   "MSG_recentlyClosed": {
+      "message": "সম্প্রতি বন্ধ হয়েছে"
+   },
+   "MSG_webStore": {
+      "message": "ওয়েব দোকান"
+   }
+}

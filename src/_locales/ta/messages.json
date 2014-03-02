@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "பயன்பாடுகள்"
+   },
+   "MSG_mostVisited": {
+      "message": "பெரும்பாலான விஜயம்"
+   },
+   "MSG_recentlyClosed": {
+      "message": "சமீபத்தில் மூடப்பட்டது"
+   },
+   "MSG_webStore": {
+      "message": "வலை ஸ்டோர்"
+   }
+}

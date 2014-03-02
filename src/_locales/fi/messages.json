@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Sovellukset"
+   },
+   "MSG_mostVisited": {
+      "message": "useimmat Visited"
+   },
+   "MSG_recentlyClosed": {
+      "message": "äskettäin suljettu"
+   },
+   "MSG_webStore": {
+      "message": "verkkokauppa"
+   }
+}

@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "アプリ"
+   },
+   "MSG_mostVisited": {
+      "message": "ほとんどの訪問"
+   },
+   "MSG_recentlyClosed": {
+      "message": "最近閉じた"
+   },
+   "MSG_webStore": {
+      "message": "ウェブストア"
+   }
+}

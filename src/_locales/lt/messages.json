@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "programos"
+   },
+   "MSG_mostVisited": {
+      "message": "Lankomiausi"
+   },
+   "MSG_recentlyClosed": {
+      "message": "neseniai uždarytas"
+   },
+   "MSG_webStore": {
+      "message": "internetinė parduotuvė"
+   }
+}

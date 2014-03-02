@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "એપ્લિકેશંસ"
+   },
+   "MSG_mostVisited": {
+      "message": "સૌથી વધુ મુલાકાત લીધી"
+   },
+   "MSG_recentlyClosed": {
+      "message": "તાજેતરમાં બંધ કરેલા"
+   },
+   "MSG_webStore": {
+      "message": "વેબ દુકાન"
+   }
+}

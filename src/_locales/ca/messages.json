@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "aplicacions"
+   },
+   "MSG_mostVisited": {
+      "message": "Més visitat"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Recentment tancat"
+   },
+   "MSG_webStore": {
+      "message": "botiga virtual"
+   }
+}

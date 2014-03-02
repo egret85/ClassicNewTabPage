@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "App"
+   },
+   "MSG_mostVisited": {
+      "message": "più visitati"
+   },
+   "MSG_recentlyClosed": {
+      "message": "recentemente chiuso"
+   },
+   "MSG_webStore": {
+      "message": "internetinė parduotuvė"
+   }
+}

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>New Tab</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/jquery.js"></script>
+    <script src="js/URI.min.js"></script>
+    <script src="js/mustcache.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/global.js"></script>
+</head>
+
+<body>
+<div class="spacer"></div>
+<div class="btn_left " id="BtnLeft"></div>
+<div class="btn_right" id="BtnRight"></div>
+
+<div class="ch_body" id="Wrapper">
+    <div class="glower">
+        <div class="gbox" style="display: -webkit-box; -webkit-transform:translate3d(0px, 0, 0)">
+            <div class="page_content">
+                <div class="tpmar"></div>
+                <div id="top_sites_list" class="pagelist">
+
+                </div>
+            </div>
+            <div id="app_page" class="page_content">
+                <div class="tpmar"></div>
+                <div id="app_list" class="pagelist">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer" id="footer">
+    <div class="foot_con">
+        <div class="logo_img"><img src="images/dlogo.png"/></div>
+        <ul class="clist" id="clist">
+            <li id="menu_mostVisited" index='0' class="current" title=""></li>
+            <li id="menu_app" index='1' title=""></li>
+        </ul>
+        <div class="menu_container">
+            <a id="menu_recentlyClosed" href="#">
+                <span id="menu_recentlyClosed_txt" class="txt"></span>
+                <span class="ic"><img src="images/sharpdown.png"/></span>
+            </a>
+        </div>
+        <div class="menu_container">
+            <a id="menu_webStore" href="https://chrome.google.com/webstore?hl=en-US&amp;utm_source=chrome-ntp-launcher">
+                <span id="menu_webStore_txt" class="txt"></span>
+				<span class="ic">
+						<img src="images/favf.png" style="right:0; top:8px;"/>
+				</span>
+            </a>
+        </div>
+    </div>
+</div>
+<menu id="recently_closed_list" class="lastclose"></menu>
+
+<div id="top_site_template" style="display: none;">
+    <div class="snapshot">
+        <a href="{{{url}}}">
+            <span class="thumbnail-wrapper">
+                <s class="close"></s>
+                <span class="thumbnail_box" style="height:155px;">
+                    <img src="{{{src}}}"/>
+                    <span class="filter"></span>
+                    <span class="bor_rad"></span>
+                    <span class="favicon"
+                          style="background-image: url(chrome://favicon/size/16@1x/{{{url}}});"></span>
+                </span>
+                <span class="title">{{{title}}}</span>
+            </span>
+        </a>
+    </div>
+</div>
+
+<div id="empty_top_site_template" style="display: none;">
+    <div class="snapshot">
+            <span class="thumbnail-wrapper">
+                <span class="thumbnail_box" style="border:0;">
+                </span>
+            </span>
+    </div>
+</div>
+
+<div id="app_template" style="display: none;">
+    <div class="snapshot">
+        <a appid="{{{id}}}" title="{{{title}}}" href="{{{appLaunchUrl}}}">
+            <span class="thumbnail-wrapper">
+                <span class="thumbnail_box" style="border:0; max-width:128px; max-height:128px;">
+                <img alt="{{{title}}}" src="{{{src}}}"/>
+                </span>
+                <span class="title">{{{title}}}</span>
+            </span>
+        </a>
+    </div>
+</div>
+
+<div id="empty_app_template" style="display: none;">
+    <div class="snapshot">
+            <span class="thumbnail-wrapper">
+                <span class="thumbnail_box" style="border:0;"></span>
+                <span class="title"></span>
+            </span>
+    </div>
+</div>
+
+
+<div id="recently_closed_template" style="display: none;">
+    <a href="{{{url}}}"><span><img src="{{{src}}}"/></span>{{{title}}}</a>
+</div>
+
+</body>
+</html>

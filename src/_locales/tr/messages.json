@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Uygulamalar"
+   },
+   "MSG_mostVisited": {
+      "message": "en çok ziyaret edilenler"
+   },
+   "MSG_recentlyClosed": {
+      "message": "son zamanlarda kapalı"
+   },
+   "MSG_webStore": {
+      "message": "Web Mağazası"
+   }
+}

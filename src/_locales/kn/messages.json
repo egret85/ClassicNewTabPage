@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "ಅಪ್ಲಿಕೇಶನ್ಗಳು"
+   },
+   "MSG_mostVisited": {
+      "message": "ಹೆಚ್ಚು ಭೇಟಿ"
+   },
+   "MSG_recentlyClosed": {
+      "message": "ಇತ್ತೀಚಿಗೆ ಮುಚ್ಚಿದ"
+   },
+   "MSG_webStore": {
+      "message": "ವೆಬ್ ಅಂಗಡಿ"
+   }
+}

@@ -1,0 +1,14 @@
+﻿{
+    "MSG_mostVisited": {
+        "message": "Наиболее посещаемый"
+    },
+    "MSG_app": {
+        "message": "Приложения"
+    },
+    "MSG_recentlyClosed": {
+        "message": "Недавно закрытые"
+    },
+    "MSG_webStore": {
+        "message": "Интернет-магазин"
+    }
+}

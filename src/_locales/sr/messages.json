@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Аппс"
+   },
+   "MSG_mostVisited": {
+      "message": "Мост Виситед"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Недавно затворено"
+   },
+   "MSG_webStore": {
+      "message": "Интернет продавница"
+   }
+}

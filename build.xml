@@ -1,0 +1,152 @@
+<project name="ClassicNewTabPage" default="all" basedir=".">
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${basedir}/ant-libs/ant-contrib/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+    <property name="build.prop" value="${basedir}/build.properties"/>
+    <property file="${build.prop}"/>
+    <property name="devbuild.number" value="${basedir}/devbuild.properties"/>
+    <property name="encoding" value="UTF-8"/>
+
+    <property name="name" value="ClassicNewTabPage"/>
+
+    <property name="build" value="${basedir}/build"/>
+    <property name="src" value="${basedir}/src"/>
+    <property name="dist" value="${basedir}/dist"/>
+    <property name="cert" value="${basedir}/.cert"/>
+
+    <property name="buildDir" value="${build}/${name}"/>
+
+    <property name="cert.chromePath" value="${cert}/chrome"/>
+    <property name="cert.chrome" value="${cert.chromePath}/${name}.pem"/>
+
+    <property name="src.chrome-update" value="${src}/.chrome-update"/>
+
+    <property name="chrome-update.update" value="${src.chrome-update}/chrome-update.xml"/>
+    <property name="chrome-update.install-part" value="${src.chrome-update}/chrome-install-part.json_part"/>
+
+    <property name="sdk.buildcrx" value="${basedir}/SDK/buildcrx.exe"/>
+
+    <property name="indentifier.chrome" value="0"/>
+
+    <target name="all" depends="clean, preinit, chrome, postBuildClean"/>
+
+    <target name="preinit">
+        <mkdir dir="${cert}"/>
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${build}"/>
+        <mkdir dir="${buildDir}"/>
+        <mkdir dir="${src}"/>
+        <mkdir dir="${cert.chromePath}"/>
+    </target>
+
+    <target name="dev" depends="clean, preinit, copy-chrome">
+        <copy todir="${dist}/chrome-dev">
+            <fileset dir="${buildDir}"/>
+        </copy>
+        <antcall target="postBuildClean"/>
+    </target>
+
+    <target name="chrome" depends="preinit, copy-chrome, chrome-zip, chrome-crx"/>
+
+    <target name="chrome-zip" depends="preinit, copy-chrome">
+        <zip destfile="${buildDir}/chrome.zip" basedir="${buildDir}"/>
+    </target>
+
+    <target name="chrome-crx" depends="chrome-keycheck, build-chrome-key">
+        <exec executable="${sdk.buildcrx}">
+            <arg value="-crx"/>
+            <arg value="${buildDir}/chrome.zip"/>
+            <arg value="${cert.chrome}"/>
+            <arg value="${dist}/${name}.crx"/>
+        </exec>
+        <antcall target="postBuildClean"/>
+
+        <loadproperties srcFile="${build.prop}"/>
+        <if>
+            <equals arg1="${@devbuild@}" arg2="true"/>
+            <then>
+                <antcall target="chrome-update"/>
+            </then>
+        </if>
+    </target>
+
+    <target name="chrome-keycheck">
+        <condition property="cert.chrome.found">
+            <available file="${cert.chrome}" type="file"/>
+        </condition>
+    </target>
+
+    <target name="build-chrome-key" unless="cert.chrome.found">
+        <exec executable="${sdk.buildcrx}">
+            <arg value="-prv"/>
+            <arg value="${cert.chrome}"/>
+        </exec>
+    </target>
+
+    <target name="chrome-update" depends="preinit, copy-chrome-update">
+        <move todir="${dist}/">
+            <fileset dir="${buildDir}/"/>
+        </move>
+        <antcall target="postBuildClean"/>
+    </target>
+
+    <target name="devnumber">
+        <buildnumber file="${devbuild.number}"/>
+    </target>
+
+    <target name="buildnumber">
+        <property file="${devbuild.number}"/>
+        <replace dir="${buildDir}" token="@devnumber@" value="${build.number}" encoding="${encoding}"/>
+    </target>
+
+    <target name="copy-chrome">
+        <copy todir="${buildDir}">
+            <fileset dir="${src}">
+                <include name="**/*.*"/>
+                <exclude name=".*/**"/>
+            </fileset>
+        </copy>
+        <antcall target="tokenreplace"/>
+        <replace dir="${buildDir}" value="${indentifier.chrome}" token="@identifier@" encoding="${encoding}"/>
+    </target>
+
+    <target name="copy-chrome-update">
+        <copy file="${chrome-update.update}" todir="${buildDir}"/>
+        <antcall target="tokenreplace"/>
+    </target>
+
+    <target name="tokenreplace" depends="buildnumber">
+        <loadfile property="chrome-update.install-part.content" srcfile="${chrome-update.install-part}"
+                  encoding="${encoding}"/>
+
+        <loadproperties srcFile="${build.prop}"/>
+        <if>
+            <equals arg1="${@devbuild@}" arg2="true"/>
+            <then>
+                <property file="${devbuild.number}"/>
+                <replace dir="${buildDir}" value="${build.number}" token="@version@" encoding="${encoding}"/>
+                <replace dir="${buildDir}" value="${@name-dev@}" token="@name@" encoding="${encoding}"/>
+                <replace dir="${buildDir}" value="${chrome-update.install-part.content}" token="@chrome-update-install-part@" encoding="${encoding}"/>
+            </then>
+            <else>
+                <replace dir="${buildDir}" value="${@ant-version@}" token="@version@" encoding="${encoding}"/>
+                <replace dir="${buildDir}" value="${@name-stable@}" token="@name@" encoding="${encoding}"/>
+                <replace dir="${buildDir}" value="" token="@chrome-update-install-part@" encoding="${encoding}"/>
+            </else>
+        </if>
+        <replace dir="${buildDir}" replacefilterfile="${build.prop}" encoding="${encoding}"/>
+
+    </target>
+
+    <target name="postBuildClean">
+        <delete dir="${buildDir}"/>
+    </target>
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>

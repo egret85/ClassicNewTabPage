@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Rakendused"
+   },
+   "MSG_mostVisited": {
+      "message": "Enim külastatud"
+   },
+   "MSG_recentlyClosed": {
+      "message": "hiljuti suletud"
+   },
+   "MSG_webStore": {
+      "message": "veebipood"
+   }
+}

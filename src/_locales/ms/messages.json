@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "aplikasi"
+   },
+   "MSG_mostVisited": {
+      "message": "kebanyakan Dilawati"
+   },
+   "MSG_recentlyClosed": {
+      "message": "baru-baru ini ditutup"
+   },
+   "MSG_webStore": {
+      "message": "web kedai"
+   }
+}

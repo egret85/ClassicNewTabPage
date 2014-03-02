@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Aplicații"
+   },
+   "MSG_mostVisited": {
+      "message": "Cele mai vizitate"
+   },
+   "MSG_recentlyClosed": {
+      "message": "închise recent"
+   },
+   "MSG_webStore": {
+      "message": "Magazin web"
+   }
+}

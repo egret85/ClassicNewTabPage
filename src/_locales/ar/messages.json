@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "تطبيقات"
+   },
+   "MSG_mostVisited": {
+      "message": "الأكثر زيارة"
+   },
+   "MSG_recentlyClosed": {
+      "message": "أغلقت مؤخرا"
+   },
+   "MSG_webStore": {
+      "message": "ويب مخزن"
+   }
+}

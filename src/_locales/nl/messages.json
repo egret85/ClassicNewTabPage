@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Apps"
+   },
+   "MSG_mostVisited": {
+      "message": "meest bezocht"
+   },
+   "MSG_recentlyClosed": {
+      "message": "onlangs sloot"
+   },
+   "MSG_webStore": {
+      "message": "webwinkel"
+   }
+}

@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "應用程序"
+   },
+   "MSG_mostVisited": {
+      "message": "訪問最多的"
+   },
+   "MSG_recentlyClosed": {
+      "message": "最近關閉"
+   },
+   "MSG_webStore": {
+      "message": "線上應用程序商店"
+   }
+}

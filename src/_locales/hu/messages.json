@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Alkalmazások"
+   },
+   "MSG_mostVisited": {
+      "message": "A leglátogatottabb"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Nemrégiben bezárt"
+   },
+   "MSG_webStore": {
+      "message": "Internetes áruház"
+   }
+}

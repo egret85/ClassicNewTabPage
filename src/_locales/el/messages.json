@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Εφαρμογές"
+   },
+   "MSG_mostVisited": {
+      "message": "πιο Δημοφιλή"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Πρόσφατα έκλεισε"
+   },
+   "MSG_webStore": {
+      "message": "Web Store"
+   }
+}

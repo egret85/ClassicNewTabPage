@@ -1,0 +1,14 @@
+﻿{
+    "MSG_mostVisited": {
+        "message": "Najczęściej odwiedzane"
+    },
+    "MSG_app": {
+        "message": "aplikacje"
+    },
+    "MSG_recentlyClosed": {
+        "message": "Ostatnio zamknięte"
+    },
+    "MSG_webStore": {
+        "message": "loja virtual"
+    }
+}

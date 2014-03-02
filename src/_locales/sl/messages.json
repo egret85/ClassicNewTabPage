@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Aplikacije"
+   },
+   "MSG_mostVisited": {
+      "message": "najbolj obiskani"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Nedavno zaprto"
+   },
+   "MSG_webStore": {
+      "message": "spletna trgovina"
+   }
+}

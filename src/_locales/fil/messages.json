@@ -1,0 +1,14 @@
+{
+   "MSG_app": {
+      "message": "Mga App"
+   },
+   "MSG_mostVisited": {
+      "message": "Karamihan Binisitang"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Kamakailang isinara"
+   },
+   "MSG_webStore": {
+      "message": "Web Store"
+   }
+}
