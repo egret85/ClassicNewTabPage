@@ -305,7 +305,7 @@ a:hover .filter {
 	left: 0;
 }
 .btn_right {
-	right: 7px;
+	right: 0px;
 }
 .btn_right.disabled, .btn_left.disabled {
 	display: none;
