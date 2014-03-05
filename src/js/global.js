@@ -262,6 +262,9 @@ $(document).ready(function () {
         $('#clist li').removeClass('current');
         $('#clist li').eq(1).addClass('current');
         resizerBox();
+        var setObj = {};
+        setObj["currentView"] = "Apps";
+        chrome.storage.local.set(setObj);
     });
     $('#BtnLeft').click(function () {
         $('.gbox').css({
@@ -273,6 +276,9 @@ $(document).ready(function () {
         $('#clist li').removeClass('current');
         $('#clist li').eq(0).addClass('current');
         resizerBox();
+        var setObj = {};
+        setObj["currentView"] = "MostVisited";
+        chrome.storage.local.set(setObj);
     });
 
     $('#clist li').click(function () {
@@ -286,10 +292,21 @@ $(document).ready(function () {
         $('#BtnRight').click();
     });
     $(window).load(function () {
-        setTimeout(function () {
-            $('#BtnLeft').click();
-        }, 100);
+        chrome.storage.local.get("currentView", function (resultObj) {
 
+            if(resultObj["currentView"] == "Apps")
+            {
+                $('#BtnRight').click();
+            }
+            else
+            {
+                $('#BtnLeft').click();
+            }
+
+            setTimeout(function () {
+                $("body").show();
+            }, 200);
+        });
     });
 
     $(window).resize(function () {

@@ -24,12 +24,14 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if (changeInfo.status === 'complete') {
         for (var i = 0; i < _topsites.length; i++) {
             if (URI(tab.url).equals(_topsites[i].url)) {
-                chrome.tabs.captureVisibleTab(tab.windowId, {}, function (dataUrl) {
-                    _topsites[i].thumb = dataUrl;
-                    var setObj = {};
-                    setObj[_topsites[i].url] = dataUrl;
-                    chrome.storage.local.set(setObj, function () {
-                        log('dataUrl saved');
+                chrome.tabs.captureVisibleTab(tab.windowId, {"format": "png"}, function (dataUrl) {
+                    resizeImage(dataUrl, 211, 130, function (resizedDataUrl) {
+                        _topsites[i].thumb = resizedDataUrl;
+                        var setObj = {};
+                        setObj[_topsites[i].url] = resizedDataUrl;
+                        chrome.storage.local.set(setObj, function () {
+                            log('dataUrl saved');
+                        });
                     });
                 });
                 return;
@@ -37,3 +39,23 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         }
     }
 });
+
+
+function resizeImage(url, width, height, callback) {
+    var sourceImage = new Image();
+
+    sourceImage.onload = function () {
+        // Create a canvas with the desired dimensions
+        var canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        // Scale and draw the source image to the canvas
+        canvas.getContext("2d").drawImage(sourceImage, 0, 0, width, height);
+
+        // Convert the canvas to a data URL in PNG format
+        callback(canvas.toDataURL());
+    }
+
+    sourceImage.src = url;
+}
