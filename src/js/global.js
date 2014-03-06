@@ -305,6 +305,7 @@ $(document).ready(function () {
 
             setTimeout(function () {
                 $("body").show();
+                $(window).resize();
             }, 200);
         });
     });
