@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectCodeStyleSettingsManager">
+    <option name="PER_PROJECT_SETTINGS">
+      <value>
+        <option name="HTML_ATTRIBUTE_WRAP" value="0" />
+        <option name="HTML_TEXT_WRAP" value="0" />
+        <option name="HTML_ALIGN_TEXT" value="true" />
+        <option name="HTML_ELEMENTS_TO_INSERT_NEW_LINE_BEFORE" value="body,div,p,form,h1,h2,h3,label,input,textarea" />
+        <option name="HTML_ELEMENTS_TO_REMOVE_NEW_LINE_BEFORE" value="" />
+        <option name="HTML_DO_NOT_ALIGN_CHILDREN_OF_MIN_LINES" value="2000" />
+        <option name="HTML_INLINE_ELEMENTS" value="a,abbr,acronym,b,basefont,bdo,big,br,cite,cite,code,dfn,em,font,i,img,kbd,q,s,samp,select,strike,strong,sub,sup,tt,u,var" />
+        <option name="HTML_DONT_ADD_BREAKS_IF_INLINE_CONTENT" value="title,h1,h2,h3,h4,h5,h6,p,span" />
+        <option name="BRACE_STYLE" value="2" />
+        <option name="CLASS_BRACE_STYLE" value="2" />
+        <option name="METHOD_BRACE_STYLE" value="2" />
+        <option name="ELSE_ON_NEW_LINE" value="true" />
+        <option name="CATCH_ON_NEW_LINE" value="true" />
+        <option name="FINALLY_ON_NEW_LINE" value="true" />
+        <option name="IF_BRACE_FORCE" value="3" />
+        <option name="DOWHILE_BRACE_FORCE" value="3" />
+        <option name="WHILE_BRACE_FORCE" value="3" />
+        <option name="FOR_BRACE_FORCE" value="3" />
+        <CssCodeStyleSettings>
+          <option name="BRACE_PLACEMENT" value="1" />
+          <option name="SPACE_BEFORE_OPENING_BRACE" value="false" />
+        </CssCodeStyleSettings>
+        <XML>
+          <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+        </XML>
+        <codeStyleSettings language="CFML">
+          <option name="BRACE_STYLE" value="2" />
+          <option name="ELSE_ON_NEW_LINE" value="true" />
+          <option name="CATCH_ON_NEW_LINE" value="true" />
+          <option name="PARENT_SETTINGS_INSTALLED" value="true" />
+        </codeStyleSettings>
+        <codeStyleSettings language="ECMA Script Level 4">
+          <option name="BRACE_STYLE" value="2" />
+          <option name="CLASS_BRACE_STYLE" value="2" />
+          <option name="METHOD_BRACE_STYLE" value="2" />
+          <option name="ELSE_ON_NEW_LINE" value="true" />
+          <option name="CATCH_ON_NEW_LINE" value="true" />
+          <option name="FINALLY_ON_NEW_LINE" value="true" />
+          <option name="IF_BRACE_FORCE" value="3" />
+          <option name="DOWHILE_BRACE_FORCE" value="3" />
+          <option name="WHILE_BRACE_FORCE" value="3" />
+          <option name="FOR_BRACE_FORCE" value="3" />
+          <option name="PARENT_SETTINGS_INSTALLED" value="true" />
+        </codeStyleSettings>
+        <codeStyleSettings language="Groovy">
+          <option name="BRACE_STYLE" value="2" />
+          <option name="CLASS_BRACE_STYLE" value="2" />
+          <option name="METHOD_BRACE_STYLE" value="2" />
+          <option name="ELSE_ON_NEW_LINE" value="true" />
+          <option name="CATCH_ON_NEW_LINE" value="true" />
+          <option name="FINALLY_ON_NEW_LINE" value="true" />
+          <option name="IF_BRACE_FORCE" value="3" />
+          <option name="WHILE_BRACE_FORCE" value="3" />
+          <option name="FOR_BRACE_FORCE" value="3" />
+          <option name="PARENT_SETTINGS_INSTALLED" value="true" />
+        </codeStyleSettings>
+        <codeStyleSettings language="JAVA">
+          <option name="BRACE_STYLE" value="2" />
+          <option name="CLASS_BRACE_STYLE" value="2" />
+          <option name="METHOD_BRACE_STYLE" value="2" />
+          <option name="ELSE_ON_NEW_LINE" value="true" />
+          <option name="CATCH_ON_NEW_LINE" value="true" />
+          <option name="FINALLY_ON_NEW_LINE" value="true" />
+          <option name="IF_BRACE_FORCE" value="3" />
+          <option name="DOWHILE_BRACE_FORCE" value="3" />
+          <option name="WHILE_BRACE_FORCE" value="3" />
+          <option name="FOR_BRACE_FORCE" value="3" />
+          <option name="PARENT_SETTINGS_INSTALLED" value="true" />
+        </codeStyleSettings>
+        <codeStyleSettings language="JavaScript">
+          <option name="BRACE_STYLE" value="2" />
+          <option name="METHOD_BRACE_STYLE" value="2" />
+          <option name="ELSE_ON_NEW_LINE" value="true" />
+          <option name="CATCH_ON_NEW_LINE" value="true" />
+          <option name="FINALLY_ON_NEW_LINE" value="true" />
+          <option name="IF_BRACE_FORCE" value="3" />
+          <option name="DOWHILE_BRACE_FORCE" value="3" />
+          <option name="WHILE_BRACE_FORCE" value="3" />
+          <option name="FOR_BRACE_FORCE" value="3" />
+        </codeStyleSettings>
+        <codeStyleSettings language="TypeScript">
+          <option name="BRACE_STYLE" value="2" />
+          <option name="CLASS_BRACE_STYLE" value="2" />
+          <option name="METHOD_BRACE_STYLE" value="2" />
+          <option name="ELSE_ON_NEW_LINE" value="true" />
+          <option name="CATCH_ON_NEW_LINE" value="true" />
+          <option name="FINALLY_ON_NEW_LINE" value="true" />
+          <option name="IF_BRACE_FORCE" value="3" />
+          <option name="DOWHILE_BRACE_FORCE" value="3" />
+          <option name="WHILE_BRACE_FORCE" value="3" />
+          <option name="FOR_BRACE_FORCE" value="3" />
+          <option name="PARENT_SETTINGS_INSTALLED" value="true" />
+        </codeStyleSettings>
+      </value>
+    </option>
+    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+  </component>
+</project>
+
