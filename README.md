@@ -27,7 +27,8 @@ The build system is made in ant and require ant and java to be installed.
 
  * `ant all` -- Build everything below except for the styles.
  * `ant devnumber` -- Increment the build number.
- * `ant chrome` -- Build the Chrome extension (.crx)
+ * `ant chrome` -- Build the packaged Chrome extension (.crx)
+ * `ant dev` -- Build the Chrome extension as a folder for development.
 
 ### Build Properties (build.properties)
 The keys in this file have the prefix and suffix `@`.
