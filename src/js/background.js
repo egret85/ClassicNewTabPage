@@ -66,23 +66,91 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab)
 });
 
 
-function resizeImage(url, width, height, callback)
+function resizeImage(url, destWidth, destHeight, callback)
 {
     var sourceImage = new Image();
 
     sourceImage.onload = function ()
     {
-        // Create a canvas with the desired dimensions
-        var canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
+        var start = new Date().getTime();
 
-        // Scale and draw the source image to the canvas
-        canvas.getContext("2d").drawImage(sourceImage, 0, 0, width, height);
+        // Create a canvas the size of the original image
+        var canvas = document.createElement("canvas");
+        canvas.width = sourceImage.width;
+        canvas.height = sourceImage.height;
+
+        // get canvas context draw original image
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(sourceImage, 0, 0);
+
+        //determine size for final image
+        var finalSize = calculateAspectRatioFill(canvas.width, canvas.height, destWidth, destHeight);
+
+        //resize image by stepping down the size gradually to improve quality
+        var scalingSteps = 0;
+        var curWidth = canvas.width;
+        var curHeight = canvas.height;
+
+        var lastWidth = curWidth;
+        var lastHeight = curHeight;
+
+        var end = false;
+        var scale = 0.5;
+        while (end == false)
+        {
+            scalingSteps += 1;
+            curWidth *= scale;
+            curHeight *= scale;
+
+            ctx.drawImage(canvas, 0, 0, Math.round(lastWidth), Math.round(lastHeight), 0, 0, Math.round(curWidth), Math.round(curHeight));
+            lastWidth = curWidth;
+            lastHeight = curHeight;
+
+            if (curWidth * scale < finalSize.width || curHeight * scale < finalSize.height)
+            {
+                end = true;
+            }
+        }
+
+        //extract final image
+        var finalCanvas = document.createElement("canvas");
+        finalCanvas.width = destWidth;
+        finalCanvas.height = destHeight;
+        var cropX = Math.round(lastWidth) - destWidth;
+        finalCanvas.getContext("2d").drawImage(canvas, Math.round(cropX / 2), 0, Math.round(lastWidth), Math.round(lastHeight), 0, 0, Math.round(lastWidth), Math.round(lastHeight));
+        var endTime = new Date().getTime();
+        console.log("execution time: " + ( endTime - start) + "ms. scale per frame: " + scale + " scaling step count: " + scalingSteps);
 
         // Convert the canvas to a data URL in PNG format
-        callback(canvas.toDataURL());
+        callback(finalCanvas.toDataURL());
+
     }
 
     sourceImage.src = url;
+}
+
+
+/**
+ * Resize arbitary width x height region to fit inside another region.
+ *
+ * Conserve aspect ratio of the orignal region. Useful when shrinking/enlarging
+ * images to fit into a certain area.
+ *
+ * @param {Number} srcWidth Source area width
+ *
+ * @param {Number} srcHeight Source area height
+ *
+ * @param {Number} destWidth Fittable area available width
+ *
+ * @param {Number} destWidth Fittable area available height
+ *
+ * @return {Object} { width, heigth }
+ *
+ */
+function calculateAspectRatioFill(srcWidth, srcHeight, destWidth, destHeight)
+{
+
+    var ratio = Math.max(destWidth / srcWidth, destHeight / srcHeight);
+
+    return { width: srcWidth * ratio, height: srcHeight * ratio };
 }

@@ -218,33 +218,48 @@ $(document).ready(function () {
     }
 
     function resizerBox() {
-        var bl = $(window).width() / 1200;
-        var baseW = $('.snapshot').width();
+        var snapshotRatio = 0.80;
+        var thumbRatio = 0.62;
         if ($(window).width() < 1200 && $(window).width() > 750) {
             $('.snapshot').css('width', '19%');
+            $('.app-snapshot').css('width', '19%');
             $('.pagelist').width($('.pagelist').parent().width());
-            $('.thumbnail_box').css('height', $('.snapshot').width() - 35);
+            $('.thumbnail_box').css('height', ($('.snapshot').width() - 1) * thumbRatio);
             $('.thumbnail_box').css('width', $('.snapshot').width() - 1);
             $('.thumbnail_box').css('-webkit-transition', 'all .2s ease-in-out');
-            $('.snapshot').css('height', $('.snapshot').width());
+            $('.app_thumbnail_box').css('height', $('.app-snapshot').width() - 35);
+            $('.app_thumbnail_box').css('width', $('.app-snapshot').width() - 35);
+            $('.app_thumbnail_box').css('-webkit-transition', 'all .2s ease-in-out');
+            $('.snapshot').css('height', $('.snapshot').width() * snapshotRatio);
+            $('.app-snapshot').css('height', $('.app-snapshot').width());
             $('.pagelist .snapshot:nth-child(3)').css('marginLeft', 28);
             $('.pagelist .snapshot:nth-child(7)').css('marginLeft', 28);
         } else if ($(window).width() > 1200) {
             $('.snapshot').css('width', 214);
-            $('.snapshot').css('height', 165);
+            $('.snapshot').css('height', $('.snapshot').width() * snapshotRatio);
+            $('.app-snapshot').css('width', 214);
+            $('.app-snapshot').css('height', 165);
             $('.pagelist').width(1000);
-            $('.thumbnail_box').css('height', 132);
+            $('.thumbnail_box').css('height', ($('.snapshot').width() - 1) * thumbRatio);
             $('.thumbnail_box').css('width', $('.snapshot').width() - 1);
             $('.thumbnail_box').css('-webkit-transition', 'all 0 ease-in-out');
+            $('.app_thumbnail_box').css('height', 132);
+            $('.app_thumbnail_box').css('width', $('.app-snapshot').width() - 1);
+            $('.app_thumbnail_box').css('-webkit-transition', 'all 0 ease-in-out');
             $('.pagelist .snapshot:nth-child(3)').css('marginLeft', 28);
             $('.pagelist .snapshot:nth-child(7)').css('marginLeft', 28);
         } else if ($(window).width() < 750) {
             $('.snapshot').css('width', '19%');
+            $('.app-snapshot').css('width', '19%');
             $('.pagelist').width(300);
-            $('.thumbnail_box').css('height', $('.snapshot').width() - 35);
-            $('.thumbnail_box').css('width', $('.snapshot').width() - 35);
+            $('.thumbnail_box').css('height', ($('.snapshot').width() - 1) * thumbRatio);
+            $('.thumbnail_box').css('width', $('.snapshot').width() - 1);
             $('.thumbnail_box').css('-webkit-transition', 'all .5s ease-in-out');
-            $('.snapshot').css('height', $('.snapshot').width());
+            $('.snapshot').css('height', $('.snapshot').width() * snapshotRatio);
+            $('.app_thumbnail_box').css('height', $('.app-snapshot').width() - 35);
+            $('.app_thumbnail_box').css('width', $('.app-snapshot').width() - 35);
+            $('.app_thumbnail_box').css('-webkit-transition', 'all .5s ease-in-out');
+            $('.app-snapshot').css('height', $('.app-snapshot').width());
             $('.pagelist .snapshot:nth-child(3)').css('marginLeft', 0);
             $('.pagelist .snapshot:nth-child(7)').css('marginLeft', 0);
 

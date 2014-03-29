@@ -58,7 +58,7 @@ background:#525252;
 	padding-bottom:20px;
 	-webkit-box-sizing: border-box;
 }
-.snapshot {
+.snapshot, .app-snapshot {
 	width: 214px;
 	max-width: 214px;
 	min-width: 120px;
@@ -73,32 +73,32 @@ background:#525252;
 	z-index: 5;
 	-webkit-transition: all 200ms ease-in-out;
 }
-#app_list .snapshot{
+#app_list .snapshot, #app_list .app-snapshot{
 	width:160px;	
 }
 .tpmar {
 	-webkit-transition: all 200ms ease-in-out;
 }
-.snapshot:nth-child(4n+1) {
+.snapshot:nth-child(4n+1), .app-snapshot:nth-child(4n+1) {
 	margin-left: 0;
 	clear: both;
 }
-.snapshot > a {
+.snapshot > a, .app-snapshot > a {
 	display: block;
 }
-.thumbnail-wrapper {
+.thumbnail-wrapper, .app-thumbnail-wrapper {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	display: block;
 	position: relative;
 	overflow: hidden;
 }
-.thumbnail-wrapper s {
+.thumbnail-wrapper s, .app-thumbnail-wrapper s {
 	position: absolute;
 	right: 3px;
 	top: 3px;
 }
-.thumbnail_box {
+.thumbnail_box, .app_thumbnail_box {
 	width: 100%;
 	-webkit-box-sizing: border-box;
 	height: 132px;
@@ -110,10 +110,10 @@ background:#525252;
 	position: relative;
 	
 }
-.thumbnail_box:hover{
+.thumbnail_box:hover, .app_thumbnail_box:hover{
 	border: 1px #969696 solid;
 }
-.thumbnail_box img {
+.thumbnail_box img, .app_thumbnail_box img {
 	border:none;
 	width: 100%;
 	height: 100%;
@@ -141,7 +141,7 @@ background:#525252;
 a:hover .filter {
 	background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0.9));
 }
-.snapshot .close {
+.snapshot .close, .app-snapshot .close {
 	display: block;
 	width: 15px;
 	display: none;
@@ -150,10 +150,10 @@ a:hover .filter {
 	-webkit-opacity: 0;
 	-webkit-transition: all 200ms ease-in-out;
 }
-.snapshot:hover .close {
+.snapshot:hover .close, .app-snapshot:hover .close {
 	-webkit-opacity: 1;
 }
-.snapshot .close:after {
+.snapshot .close:after, .app-snapshot .close:after {
 	content: '';
 	position: absolute;
 	width: 3px;
@@ -161,7 +161,7 @@ a:hover .filter {
 	-webkit-transform: rotate(45deg);
 	background: #f60;
 }
-.snapshot .close:before {
+.snapshot .close:before, .app-snapshot .close:before {
 	content: '';
 	position: absolute;
 	width: 3px;
@@ -169,7 +169,7 @@ a:hover .filter {
 	-webkit-transform: rotate(-45deg);
 	background: #f60;
 }
-.snapshot .close:hover:after {
+.snapshot .close:hover:after, .app-snapshot .close:hover:after {
 	content: '';
 	position: absolute;
 	width: 3px;
@@ -177,7 +177,7 @@ a:hover .filter {
 	-webkit-transform: rotate(45deg);
 	background: #f00;
 }
-.snapshot .close:hover:before {
+.snapshot .close:hover:before, .app-snapshot .close:hover:before {
 	content: '';
 	position: absolute;
 	width: 3px;
@@ -185,7 +185,7 @@ a:hover .filter {
 	-webkit-transform: rotate(-45deg);
 	background: #f00;
 }
-.snapshot .title {
+.snapshot .title, .app-snapshot .title {
 	color: #000;
 	margin: 8px 0 0;
 	height: 23px;
