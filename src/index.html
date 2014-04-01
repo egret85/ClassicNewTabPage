@@ -43,6 +43,10 @@
             <li id="menu_app" index='1' title=""></li>
         </ul>
         <div class="menu_container">
+			<a id="menu_otherDevices" href="#">
+                <span id="menu_otherDevices_txt" class="txt"></span>
+                <span class="ic"><img src="images/sharpdown.png"/></span>
+            </a>
             <a id="menu_recentlyClosed" href="#">
                 <span id="menu_recentlyClosed_txt" class="txt"></span>
                 <span class="ic"><img src="images/sharpdown.png"/></span>
@@ -58,6 +62,7 @@
         </div>
     </div>
 </div>
+<menu id="other_devices_list" class="lastclose"></menu>
 <menu id="recently_closed_list" class="lastclose"></menu>
 
 <div id="top_site_template" style="display: none;">
@@ -111,6 +116,10 @@
 
 
 <div id="recently_closed_template" style="display: none;">
+    <a href="{{{url}}}"><span><img src="{{{src}}}"/></span>{{{title}}}</a>
+</div>
+
+<div id="other_devices_template" style="display: none;">
     <a href="{{{url}}}"><span><img src="{{{src}}}"/></span>{{{title}}}</a>
 </div>
 

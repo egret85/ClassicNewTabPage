@@ -271,6 +271,9 @@ a:hover .filter {
 .menu_container > a{
 	display:-webkit-box;
 }
+.menu_container a {
+	padding-left: 15px;
+}
 .menu_container .txt, .menu_container .ic {
 	display: inline-block;
 	height: 24px;

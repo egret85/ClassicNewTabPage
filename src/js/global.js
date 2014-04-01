@@ -3,15 +3,18 @@
 $(document).ready(function () {
     var $footer = $('#footer');
     var $recentlyClosedList = $('#recently_closed_list');
+	var $otherDevicesList = $('#other_devices_list');
     var $menuMostVisited = $footer.find('#menu_mostVisited');
     var $menuApp = $footer.find('#menu_app');
     var $menuRecentlyClosed = $footer.find('#menu_recentlyClosed');
+	var $menuOtherDevices = $footer.find('#menu_otherDevices');
     var $menuWebStore = $footer.find('#menu_webStore');
     var $topSitesList = $('#top_sites_list');
 
     setI18n();
 
     setRecentlyClosedDataAndEvent();
+	setOtherDevicesDataAndEvent();
     setAppList();
     setTopSites();
 
@@ -28,6 +31,20 @@ $(document).ready(function () {
         });
 
     }
+	
+	function setOtherDevicesEvent() {
+        $('#menu_otherDevices').click(function (event) {
+            $otherDevicesList.toggle();
+            return false;
+        });
+        $(document).click(function (event) {
+            if ($otherDevicesList.is(':visible')) {
+                $otherDevicesList.hide();
+            }
+        });
+		
+    }
+
 
 
     /**
@@ -41,10 +58,12 @@ $(document).ready(function () {
         var mostVisited = getI18nMsg('MSG_mostVisited');
         var app = getI18nMsg('MSG_app');
         var recentlyClosed = getI18nMsg('MSG_recentlyClosed');
+		var otherDevices = getI18nMsg('MSG_otherDevices');
         var webStore = getI18nMsg('MSG_webStore');
         $menuMostVisited.attr('title', mostVisited).text(mostVisited);
         $menuApp.attr('title', app).text(app);
         $menuRecentlyClosed.find('#menu_recentlyClosed_txt').text(recentlyClosed);
+		$menuOtherDevices.find('#menu_otherDevices_txt').text(otherDevices);
         $menuWebStore.find('#menu_webStore_txt').text(webStore);
     }
 
@@ -91,7 +110,85 @@ $(document).ready(function () {
             }
         );
     }
+	
+	
+	function setOtherDevicesDataAndEvent() {
+		// NOTE - VEH 2014/04/01: uses chrome.sessions API (only available in dev build as of now)
+		if (!chrome.sessions) {
+			disableOtherDevices();
+			return;
+		}
+			
+		chrome.sessions.getDevices(
+			{
+				maxResults: 20
+			},
+			function (devices) {
+				var templateStr = $('#other_devices_template').get(0).innerHTML;
+				var s = '';
+				var validCnt = 0;
+				
+				if (devices.length > 0) 
+					enableOtherDevices();
+				else
+					disableOtherDevices();
+					
+				log(devices);
+				// loop trough devices
+				for (var i = 0; i < devices.length; i++) {
+					var tabs = [];
+				
+					// Add device title
+					s += '<b>' + devices[i].name + '</b>';
+					
+					if (devices.tabs) {
+						for (var j = 0; j < devices.tabs.length; j++) {
+							tabs.push(devices.tabs[j]);
+						}
+					}
+					if (devices.windows) {
+						for (var j = 0; j < devices.windows.length; j++) {
+							for (var k = 0; k < devices.windows[j].tabs.length; k++) {
+								tabs.push(devices.windows[j].tabs[k]);
+							}
+						}
+					}
+					
+					log(tabs);
+					log(tabs.length);
+					if (tabs.length > 0) {
+						for (var j = 0; j < tabs.length; j++) {
+							s += Mustache.to_html(
+								templateStr,
+								{
+									"title": ( tabs[j].title ? tabs[j].title : tabs[j].url.substr(0, 30) ),
+									"url": tabs[j].url,
+									"src": tabs[j].favIconUrl
+								}
+							);
+						}
+					}
+				}
+					
 
+				$('#other_devices_list').html(s);
+				setOtherDevicesEvent();
+			}
+		);
+    }
+	
+	function disableOtherDevices() {
+		//if ($menuOtherDevices.is(':visible')) 
+			$menuOtherDevices.hide();
+		//if ($otherDevicesList.is(':visible')) 
+			$otherDevicesList.hide();
+	}
+
+	function enableOtherDevices() {
+		//if ($menuOtherDevices.is(':hidden')) 
+			$menuOtherDevices.show();
+	}	
+	
 
     function setAppList() {
         chrome.management.getAll(function (data) {
