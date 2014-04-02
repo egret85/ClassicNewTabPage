@@ -140,11 +140,6 @@ $(document).ready(function () {
 				var s = '';
 				var validCnt = 0;
 				
-				if (devices.length > 0) 
-					enableOtherDevices();
-				else
-					disableOtherDevices();
-					
 				log(devices);
 				// loop trough devices
 				for (var i = 0; i < devices.length; i++) {
