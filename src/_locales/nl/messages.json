@@ -3,12 +3,15 @@
       "message": "Apps"
    },
    "MSG_mostVisited": {
-      "message": "meest bezocht"
+      "message": "Meest bezocht"
    },
    "MSG_recentlyClosed": {
-      "message": "onlangs sloot"
+      "message": "Onlangs gesloten"
+   },
+   "MSG_otherDevices": {
+      "message": "Andere toestellen"
    },
    "MSG_webStore": {
-      "message": "webwinkel"
+      "message": "Webwinkel"
    }
 }
