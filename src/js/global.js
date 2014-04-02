@@ -14,7 +14,7 @@ $(document).ready(function () {
     setI18n();
 
     setRecentlyClosedDataAndEvent();
-	setOtherDevicesDataAndEvent();
+	setOtherDevicesEvent();
     setAppList();
     setTopSites();
 
@@ -22,6 +22,9 @@ $(document).ready(function () {
     function setRecentlyClosedEvent() {
         $('#menu_recentlyClosed').click(function (event) {
             $recentlyClosedList.toggle();
+			if ($otherDevicesList.is(':visible')) {
+                $otherDevicesList.hide();
+            }
             return false;
         });
         $(document).click(function (event) {
@@ -34,7 +37,15 @@ $(document).ready(function () {
 	
 	function setOtherDevicesEvent() {
         $('#menu_otherDevices').click(function (event) {
+			// (re)load data if not visible
+			if (!$otherDevicesList.is(':visible'))
+				setOtherDevicesData();
+			// open list
             $otherDevicesList.toggle();
+			// close 'recently closed' list, if visible
+			if ($recentlyClosedList.is(':visible')) {
+                $recentlyClosedList.hide();
+            }
             return false;
         });
         $(document).click(function (event) {
@@ -112,7 +123,7 @@ $(document).ready(function () {
     }
 	
 	
-	function setOtherDevicesDataAndEvent() {
+	function setOtherDevicesData() {
 		// NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build as of now)
 		if (!chrome.sessions) {
 			disableOtherDevices();
@@ -137,9 +148,14 @@ $(document).ready(function () {
 				// loop trough devices
 				for (var i = 0; i < devices.length; i++) {
 					var tabs = [];
-				
-					// Add device title
-					s += '<b>' + devices[i].info + '</b>';
+					
+					// if there are no sessions for this device, do nothing and continue to the next one
+					if (devices[i].sessions.length <= 0)
+						continue;
+						
+					// Add device title 
+					// sessions are sorted with the most recent first
+					s += '<h3>' + devices[i].info + ' <span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>'; 
 					
 					// loop trough sessions and add tabs to the local tabs array
 					for (var j = 0; j < devices[i].sessions.length; j++) {
@@ -172,7 +188,6 @@ $(document).ready(function () {
 					
 
 				$('#other_devices_list').html(s);
-				setOtherDevicesEvent();
 			}
 		);
     }
@@ -437,6 +452,9 @@ $(document).ready(function () {
         }
         resizerBox();
     });
+	
+	// load appropriate locale for the timeago plugin (will probably default to english if this is not found)
+	$.getScript('js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage().substring(0,2) + '.js');
 });
 
 
