@@ -113,7 +113,7 @@ $(document).ready(function () {
 	
 	
 	function setOtherDevicesDataAndEvent() {
-		// NOTE - VEH 2014/04/01: uses chrome.sessions API (only available in dev build as of now)
+		// NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build as of now)
 		if (!chrome.sessions) {
 			disableOtherDevices();
 			return;
@@ -139,23 +139,23 @@ $(document).ready(function () {
 					var tabs = [];
 				
 					// Add device title
-					s += '<b>' + devices[i].name + '</b>';
+					s += '<b>' + devices[i].info + '</b>';
 					
-					if (devices.tabs) {
-						for (var j = 0; j < devices.tabs.length; j++) {
-							tabs.push(devices.tabs[j]);
+					// loop trough sessions and add tabs to the local tabs array
+					for (var j = 0; j < devices[i].sessions.length; j++) {
+						if (devices[i].sessions[j].tab) {
+							tabs.push(devices[i].sessions[j].tab);
 						}
-					}
-					if (devices.windows) {
-						for (var j = 0; j < devices.windows.length; j++) {
-							for (var k = 0; k < devices.windows[j].tabs.length; k++) {
-								tabs.push(devices.windows[j].tabs[k]);
+						if (devices[i].sessions[j].window) {
+							for (var k = 0; k < devices[i].sessions[j].window.tabs.length; k++) {
+								tabs.push(devices[i].sessions[j].window.tabs[k]);
 							}
 						}
 					}
 					
 					log(tabs);
 					log(tabs.length);
+					// loop trough the local tabs array and add each entry to the list
 					if (tabs.length > 0) {
 						for (var j = 0; j < tabs.length; j++) {
 							s += Mustache.to_html(
@@ -163,7 +163,7 @@ $(document).ready(function () {
 								{
 									"title": ( tabs[j].title ? tabs[j].title : tabs[j].url.substr(0, 30) ),
 									"url": tabs[j].url,
-									"src": tabs[j].favIconUrl
+									"src": 'chrome://favicon/' + tabs[j].url
 								}
 							);
 						}
