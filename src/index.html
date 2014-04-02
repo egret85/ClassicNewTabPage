@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <title>New Tab</title>
     <link href="css/style.css" rel="stylesheet"/>
-    <script src="js/analytics.js"></script>
-    <script src="js/jquery-2.1.0.min.js"></script>
-    <script src="js/URI.min.js"></script>
-    <script src="js/mustcache.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/global.js"></script>
+    <script type="text/javascript" src="js/analytics.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/URI.min.js"></script>
+	<script type="text/javascript" src="js/timeago/jquery.timeago.js"></script>
+    <script type="text/javascript" src="js/mustcache.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/global.js"></script>
 </head>
 
 <body style="display: none">
@@ -43,6 +44,10 @@
             <li id="menu_app" index='1' title=""></li>
         </ul>
         <div class="menu_container">
+			<a id="menu_otherDevices" href="#">
+                <span id="menu_otherDevices_txt" class="txt"></span>
+                <span class="ic"><img src="images/sharpdown.png"/></span>
+            </a>
             <a id="menu_recentlyClosed" href="#">
                 <span id="menu_recentlyClosed_txt" class="txt"></span>
                 <span class="ic"><img src="images/sharpdown.png"/></span>
@@ -58,6 +63,7 @@
         </div>
     </div>
 </div>
+<menu id="other_devices_list" class="otherdevices"></menu>
 <menu id="recently_closed_list" class="lastclose"></menu>
 
 <div id="top_site_template" style="display: none;">
@@ -111,6 +117,10 @@
 
 
 <div id="recently_closed_template" style="display: none;">
+    <a href="{{{url}}}"><span><img src="{{{src}}}"/></span>{{{title}}}</a>
+</div>
+
+<div id="other_devices_template" style="display: none;">
     <a href="{{{url}}}"><span><img src="{{{src}}}"/></span>{{{title}}}</a>
 </div>
 
