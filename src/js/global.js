@@ -14,6 +14,7 @@ $(document).ready(function () {
     setI18n();
 
     setRecentlyClosedDataAndEvent();
+	setOtherDevicesData
 	setOtherDevicesEvent();
     setAppList();
     setTopSites();
@@ -454,7 +455,13 @@ $(document).ready(function () {
     });
 	
 	// load appropriate locale for the timeago plugin (will probably default to english if this is not found)
-	$.getScript('js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage().substring(0,2) + '.js');
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage().substring(0,2) + '.js';
+	head.appendChild(script);
+	// gives unsafe-eval message due to CSP
+	//$.getScript('js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage().substring(0,2) + '.js');
 });
 
 
