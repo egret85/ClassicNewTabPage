@@ -14,11 +14,17 @@ $(document).ready(function () {
     setI18n();
 
     setRecentlyClosedDataAndEvent();
-	setOtherDevicesData
-	setOtherDevicesEvent();
     setAppList();
     setTopSites();
-
+	
+	// NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build (35.0.1916.6 dev-m) as of now)	
+	// disable the other devices button if chrome.sessions is not available
+	if (!chrome.sessions) {
+		disableOtherDevices();
+	} else {
+		setOtherDevicesData();
+		setOtherDevicesEvent();
+	}
 
     function setRecentlyClosedEvent() {
         $('#menu_recentlyClosed').click(function (event) {
@@ -125,12 +131,7 @@ $(document).ready(function () {
 	
 	
 	function setOtherDevicesData() {
-		// NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build as of now)
-		if (!chrome.sessions) {
-			disableOtherDevices();
-			return;
-		}
-			
+		// NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build (35.0.1916.6 dev-m) as of now)			
 		chrome.sessions.getDevices(
 			{
 				maxResults: 20
