@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "சமீபத்தில் மூடப்பட்டது"
    },
+   "MSG_otherDevices": {
+     "message": "மற்ற சாதனங்கள்" 
+   },
    "MSG_webStore": {
       "message": "வலை ஸ்டோர்"
    }

@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "închise recent"
    },
+   "MSG_otherDevices": {
+      "message": "Alte dispozitive" 
+   },
    "MSG_webStore": {
       "message": "Magazin web"
    }

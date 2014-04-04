@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "V poslednej dobe uzavretý"
    },
+   "MSG_otherDevices": {
+      "message": "Ostatné zariadenia" 
+   },
    "MSG_webStore": {
       "message": "internetový obchod"
    }

@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "તાજેતરમાં બંધ કરેલા"
    },
+   "MSG_otherDevices": {
+      "message": "અન્ય ઉપકરણો" 
+   },
    "MSG_webStore": {
       "message": "વેબ દુકાન"
    }

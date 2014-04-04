@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "hiljuti suletud"
    },
+   "MSG_otherDevices": {
+      "message": "Muud seadmed" 
+   },
    "MSG_webStore": {
       "message": "veebipood"
    }

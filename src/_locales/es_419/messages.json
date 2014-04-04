@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "Recientemente cerrado"
    },
+   "MSG_otherDevices": {
+      "message": "Otros dispositivos" 
+   },
    "MSG_webStore": {
       "message": "tienda virtual"
    }

@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "ที่เพิ่งปิด"
    },
+   "MSG_otherDevices": {
+      "message": "อุปกรณ์อื่น ๆ " 
+   },
    "MSG_webStore": {
       "message": "เว็บสโตร์"
    }
