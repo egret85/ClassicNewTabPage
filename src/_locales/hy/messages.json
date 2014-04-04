@@ -1,0 +1,17 @@
+{
+   "MSG_app" {
+      "message": "Apps"
+   },
+   "MSG_mostVisited" {
+      "message": "Մեծ մասը այցելել են"
+   },
+   "MSG_recentlyClosed" {
+      "message": "Վերջերս փակված"
+   },
+   "MSG_otherDevices": {
+      "message": "Այլ սարքեր"
+   },
+   "MSG_webStore" {
+      "message": "ինտերնետային խանութ"
+   }
+}
