@@ -191,15 +191,12 @@ $(document).ready(function () {
     }
 	
 	function disableOtherDevices() {
-		//if ($menuOtherDevices.is(':visible')) 
-			$menuOtherDevices.hide();
-		//if ($otherDevicesList.is(':visible')) 
-			$otherDevicesList.hide();
+		$menuOtherDevices.hide();
+		$otherDevicesList.hide();
 	}
 
 	function enableOtherDevices() {
-		//if ($menuOtherDevices.is(':hidden')) 
-			$menuOtherDevices.show();
+		$menuOtherDevices.show();
 	}	
 	
 
@@ -457,8 +454,6 @@ $(document).ready(function () {
     script.type = 'text/javascript';
     script.src = 'js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage().substring(0,2) + '.js';
 	head.appendChild(script);
-	// gives unsafe-eval message due to CSP
-	//$.getScript('js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage().substring(0,2) + '.js');
 });
 
 
