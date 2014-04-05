@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "neseniai uždarytas"
    },
+   "MSG_otherDevices": {
+      "message": "Kiti įrenginiai" 
+   },
    "MSG_webStore": {
       "message": "internetinė parduotuvė"
    }

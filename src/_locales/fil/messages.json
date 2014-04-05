@@ -8,7 +8,10 @@
    "MSG_recentlyClosed": {
       "message": "Kamakailang isinara"
    },
+   "MSG_otherDevices": {
+      "message": "Iba pang mga aparato" 
+   },
    "MSG_webStore": {
-      "message": "Web Store"
+      "message": "Web tindahan"
    }
 }

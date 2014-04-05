@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "son zamanlarda kapalı"
    },
+   "MSG_otherDevices": {
+      "message": "Diğer aygıtlar" 
+   },
    "MSG_webStore": {
       "message": "Web Mağazası"
    }

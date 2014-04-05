@@ -1,13 +1,16 @@
 ﻿{
-    "MSG_mostVisited": {
-        "message": "mest Besøkte"
-    },
     "MSG_app": {
         "message": "Apps"
+    },
+    "MSG_mostVisited": {
+        "message": "mest Besøkte"
     },
     "MSG_recentlyClosed": {
         "message": "nylig avsluttet"
     },
+    "MSG_otherDevices": {
+      "message": "Peranti lain" 
+   },
     "MSG_webStore": {
         "message": "nettbutikk"
     }

@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "最近关闭"
    },
+   "MSG_otherDevices": {
+      "message": "其它设备"
+   },
    "MSG_webStore": {
       "message": "在线商店"
    }

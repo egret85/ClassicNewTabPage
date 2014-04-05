@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "Recentment tancat"
    },
+   "MSG_otherDevices": {
+      "message": "Altres dispositius" 
+   },
    "MSG_webStore": {
       "message": "botiga virtual"
    }

@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "đóng gần đây"
    },
+   "MSG_otherDevices": {
+      "message": "Các thiết bị khác" 
+   },
    "MSG_webStore": {
       "message": "Cửa hàng trực tuyến"
    }

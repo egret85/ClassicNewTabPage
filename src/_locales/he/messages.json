@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "נסגר לאחרונה"
    },
+   "MSG_otherDevices": {
+      "message": "התקנים אחרים" 
+   },
    "MSG_webStore": {
       "message": "חנות האינטרנט של"
    }

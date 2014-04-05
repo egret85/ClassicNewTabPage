@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "нещодавно закриті"
    },
+   "MSG_otherDevices": {
+      "message": "Інші пристрої" 
+   },
    "MSG_webStore": {
       "message": "Веб-магазин"
    }

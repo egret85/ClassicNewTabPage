@@ -1,0 +1,17 @@
+{
+   "MSG_app": {
+      "message": "апликации"
+   },
+   "MSG_mostVisited": {
+      "message": "Најпосетени"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Неодамна затворени"
+    },
+   "MSG_otherDevices": {
+      "message": "Други уреди"
+   },
+   "MSG_webStore": {
+      "message": "Веб Магазин"
+   }
+}
