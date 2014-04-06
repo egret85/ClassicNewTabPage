@@ -1,14 +1,17 @@
-﻿{
-    "MSG_mostVisited": {
-        "message": "Most visited"
-    },
-    "MSG_app": {
-        "message": "Apps"
-    },
-    "MSG_recentlyClosed": {
-        "message": "Recently closed"
-    },
-    "MSG_webStore": {
-        "message": "Web Store"
-    }
+{
+   "MSG_app": {
+      "message": "Apps"
+   },
+   "MSG_mostVisited": {
+      "message": "Most visited"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Recently closed"
+   },
+   "MSG_otherDevices": {
+      "message": "Other devices"
+   },
+   "MSG_webStore": {
+      "message": "Web Store"
+   }
 }

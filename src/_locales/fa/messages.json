@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "به تازگی بسته شده"
    },
+   "MSG_otherDevices": {
+      "message": "دستگاه های دیگر" 
+   },
    "MSG_webStore": {
       "message": "فروشگاه وب"
    }

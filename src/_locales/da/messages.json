@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "For nylig lukkede"
    },
+   "MSG_otherDevices": {
+      "message": "Andre enheder" 
+   },
    "MSG_webStore": {
       "message": "Webshop"
    }

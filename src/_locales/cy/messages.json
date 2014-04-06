@@ -1,0 +1,17 @@
+{
+   "MSG_app": {
+      "message": "Apps"
+   },
+   "MSG_mostVisited": {
+      "message": "Mae'r rhan fwyaf ymweld â"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Ychwanegwyd yn ddiweddar"
+   },
+   "MSG_otherDevices": {
+      "message": "dyfeisiau Arall"
+   },
+   "MSG_webStore": {
+      "message": "Store Web"
+   }
+}

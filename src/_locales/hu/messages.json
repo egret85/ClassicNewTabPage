@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "Nemrégiben bezárt"
    },
+   "MSG_otherDevices": {
+      "message": "Egyéb eszközök" 
+   },
    "MSG_webStore": {
       "message": "Internetes áruház"
    }

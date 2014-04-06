@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "Nedavno je zatvoren"
    },
+   "MSG_otherDevices": {
+      "message": "Drugi uređaji" 
+   },
    "MSG_webStore": {
       "message": "web-trgovina"
    }

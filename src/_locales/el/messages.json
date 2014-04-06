@@ -8,7 +8,10 @@
    "MSG_recentlyClosed": {
       "message": "Πρόσφατα έκλεισε"
    },
+   "MSG_otherDevices": {
+      "message": "Άλλες συσκευές" 
+   },
    "MSG_webStore": {
-      "message": "Web Store"
+      "message": "ηλεκτρονικό κατάστημα"
    }
 }

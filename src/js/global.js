@@ -1,11 +1,11 @@
-
-
 $(document).ready(function () {
     var $footer = $('#footer');
     var $recentlyClosedList = $('#recently_closed_list');
+    var $otherDevicesList = $('#other_devices_list');
     var $menuMostVisited = $footer.find('#menu_mostVisited');
     var $menuApp = $footer.find('#menu_app');
     var $menuRecentlyClosed = $footer.find('#menu_recentlyClosed');
+    var $menuOtherDevices = $footer.find('#menu_otherDevices');
     var $menuWebStore = $footer.find('#menu_webStore');
     var $topSitesList = $('#top_sites_list');
 
@@ -15,10 +15,21 @@ $(document).ready(function () {
     setAppList();
     setTopSites();
 
+    // NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build (35.0.1916.6 dev-m) as of now)
+    // disable the other devices button if chrome.sessions is not available
+    if (!chrome.sessions) {
+        disableOtherDevices();
+    } else {
+        setOtherDevicesData();
+        setOtherDevicesEvent();
+    }
 
     function setRecentlyClosedEvent() {
         $('#menu_recentlyClosed').click(function (event) {
             $recentlyClosedList.toggle();
+            if ($otherDevicesList.is(':visible')) {
+                $otherDevicesList.hide();
+            }
             return false;
         });
         $(document).click(function (event) {
@@ -28,6 +39,28 @@ $(document).ready(function () {
         });
 
     }
+
+    function setOtherDevicesEvent() {
+        $('#menu_otherDevices').click(function (event) {
+            // (re)load data if not visible
+            if (!$otherDevicesList.is(':visible'))
+                setOtherDevicesData();
+            // open list
+            $otherDevicesList.toggle();
+            // close 'recently closed' list, if visible
+            if ($recentlyClosedList.is(':visible')) {
+                $recentlyClosedList.hide();
+            }
+            return false;
+        });
+        $(document).click(function (event) {
+            if ($otherDevicesList.is(':visible')) {
+                $otherDevicesList.hide();
+            }
+        });
+
+    }
+
 
 
     /**
@@ -41,10 +74,12 @@ $(document).ready(function () {
         var mostVisited = getI18nMsg('MSG_mostVisited');
         var app = getI18nMsg('MSG_app');
         var recentlyClosed = getI18nMsg('MSG_recentlyClosed');
+        var otherDevices = getI18nMsg('MSG_otherDevices');
         var webStore = getI18nMsg('MSG_webStore');
         $menuMostVisited.attr('title', mostVisited).text(mostVisited);
         $menuApp.attr('title', app).text(app);
         $menuRecentlyClosed.find('#menu_recentlyClosed_txt').text(recentlyClosed);
+        $menuOtherDevices.find('#menu_otherDevices_txt').text(otherDevices);
         $menuWebStore.find('#menu_webStore_txt').text(webStore);
     }
 
@@ -90,6 +125,76 @@ $(document).ready(function () {
                 }
             }
         );
+    }
+
+
+    function setOtherDevicesData() {
+        // NOTE - VEH 2014/04/02: uses chrome.sessions API (only available in dev build (35.0.1916.6 dev-m) as of now)
+        chrome.sessions.getDevices(
+            {
+                maxResults: 20
+            },
+            function (devices) {
+                var templateStr = $('#other_devices_template').get(0).innerHTML;
+                var s = '';
+                var validCnt = 0;
+
+                log(devices);
+                // loop trough devices
+                for (var i = 0; i < devices.length; i++) {
+                    var tabs = [];
+
+                    // if there are no sessions for this device, do nothing and continue to the next one
+                    if (devices[i].sessions.length <= 0)
+                        continue;
+
+                    // Add device title
+                    // sessions are sorted with the most recent first
+                    // TODO - VEH 2014/04/02: make each device's list collapsable like it was in the good old days
+                    s += '<h3>' + devices[i].info + ' <span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>';
+
+                    // loop trough sessions and add tabs to the local tabs array
+                    for (var j = 0; j < devices[i].sessions.length; j++) {
+                        if (devices[i].sessions[j].tab) {
+                            tabs.push(devices[i].sessions[j].tab);
+                        }
+                        if (devices[i].sessions[j].window) {
+                            for (var k = 0; k < devices[i].sessions[j].window.tabs.length; k++) {
+                                tabs.push(devices[i].sessions[j].window.tabs[k]);
+                            }
+                        }
+                    }
+
+                    log(tabs);
+                    log(tabs.length);
+                    // loop trough the local tabs array and add each entry to the list
+                    if (tabs.length > 0) {
+                        for (var j = 0; j < tabs.length; j++) {
+                            s += Mustache.to_html(
+                                templateStr,
+                                {
+                                    "title": ( tabs[j].title ? tabs[j].title : tabs[j].url.substr(0, 30) ),
+                                    "url": tabs[j].url,
+                                    "src": 'chrome://favicon/' + tabs[j].url
+                                }
+                            );
+                        }
+                    }
+                }
+
+
+                $('#other_devices_list').html(s);
+            }
+        );
+    }
+
+    function disableOtherDevices() {
+        $menuOtherDevices.hide();
+        $otherDevicesList.hide();
+    }
+
+    function enableOtherDevices() {
+        $menuOtherDevices.show();
     }
 
 
@@ -340,8 +445,11 @@ $(document).ready(function () {
         }
         resizerBox();
     });
+
+    // load appropriate locale for the timeago plugin (will probably default to english if this is not found)
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'js/timeago/locales/jquery.timeago.' + chrome.i18n.getUILanguage() + '.js';
+    head.appendChild(script);
 });
-
-
-
-

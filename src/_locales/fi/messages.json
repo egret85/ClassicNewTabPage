@@ -3,10 +3,13 @@
       "message": "Sovellukset"
    },
    "MSG_mostVisited": {
-      "message": "useimmat Visited"
+      "message": "Luetuimmat kirjoitukset"
    },
    "MSG_recentlyClosed": {
       "message": "äskettäin suljettu"
+   },
+   "MSG_otherDevices": {
+      "message": "Muut laitteet" 
    },
    "MSG_webStore": {
       "message": "verkkokauppa"

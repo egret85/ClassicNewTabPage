@@ -1,0 +1,17 @@
+{
+   "MSG_app": {
+      "message": "Aplikasi"
+   },
+   "MSG_mostVisited": {
+      "message": "Paling kerep dibukak"
+   },
+   "MSG_recentlyClosed": {
+      "message": "Bubar ditutup"
+   },
+   "MSG_otherDevices": {
+      "message": "piranti Liyane"
+   },
+   "MSG_webStore": {
+      "message": "Web Toko"
+   }
+}

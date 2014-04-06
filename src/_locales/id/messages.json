@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "Baru-baru ini ditutup"
    },
+   "MSG_otherDevices": {
+      "message": "Perangkat lain" 
+   },
    "MSG_webStore": {
       "message": "Toko Web"
    }

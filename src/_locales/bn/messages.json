@@ -8,6 +8,9 @@
    "MSG_recentlyClosed": {
       "message": "সম্প্রতি বন্ধ হয়েছে"
    },
+   "MSG_otherDevices": {
+      "message": "অন্যান্য ডিভাইস" 
+   },
    "MSG_webStore": {
       "message": "ওয়েব দোকান"
    }
