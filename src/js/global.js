@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     setI18n();
 
-    setRecentlyClosedDataAndEvent();
+    setRecentlyClosedEvent();
     setAppList();
     setTopSites();
 
@@ -20,45 +20,56 @@ $(document).ready(function () {
     if (!chrome.sessions) {
         disableOtherDevices();
     } else {
-        setOtherDevicesData();
         setOtherDevicesEvent();
     }
 
+    // Hide menus when clicking elements that have the class "onclick-hides-menu"
+    function hideMenus() {
+        if ($otherDevicesList.is(':visible')) {
+            $otherDevicesList.hide();
+        }
+        if ($recentlyClosedList.is(':visible')) {
+            $recentlyClosedList.hide();
+        }
+    }
+    $(".onclick-hides-menu").click(hideMenus);
+
     function setRecentlyClosedEvent() {
         $('#menu_recentlyClosed').click(function (event) {
-            $recentlyClosedList.toggle();
-            if ($otherDevicesList.is(':visible')) {
-                $otherDevicesList.hide();
+            if (!$recentlyClosedList.is(':visible')) {
+                // (re)load data if not visible
+                setRecentlyClosedData();
+                // hide all (other) menus
+                hideMenus();
+                // open menu
+                $recentlyClosedList.toggle();
+            } else {
+                hideMenus();
             }
+            
+            // we must return false here or the hideMenus() function will be called again by the ".onclick-hides-menu" click handler
+            // returning false here stops event propagation (the click event of all parent elements is not triggered)
             return false;
         });
-        $(document).click(function (event) {
-            if ($recentlyClosedList.is(':visible')) {
-                $recentlyClosedList.hide();
-            }
-        });
-
     }
 
     function setOtherDevicesEvent() {
         $('#menu_otherDevices').click(function (event) {
-            // (re)load data if not visible
-            if (!$otherDevicesList.is(':visible'))
+            if (!$otherDevicesList.is(':visible')) {
+                // (re)load data if not visible
                 setOtherDevicesData();
-            // open list
-            $otherDevicesList.toggle();
-            // close 'recently closed' list, if visible
-            if ($recentlyClosedList.is(':visible')) {
-                $recentlyClosedList.hide();
+                // hide all (other) menus
+                hideMenus();
+                // open menu
+                $otherDevicesList.toggle();
+            } else {
+                hideMenus();
             }
+            
+            // we must return false here or the hideMenus() function will be called again by the ".onclick-hides-menu" click handler
+            // returning false here stops event propagation (the click event of all parent elements is not triggered)
             return false;
         });
-        $(document).click(function (event) {
-            if ($otherDevicesList.is(':visible')) {
-                $otherDevicesList.hide();
-            }
-        });
-
     }
 
 
@@ -84,7 +95,7 @@ $(document).ready(function () {
     }
 
 
-    function setRecentlyClosedDataAndEvent() {
+    function setRecentlyClosedData() {
         chrome.history.search(
             {
                 text: '',
@@ -121,7 +132,6 @@ $(document).ready(function () {
                     }
 
                     $('#recently_closed_list').html(s);
-                    setRecentlyClosedEvent();
                 }
             }
         );
@@ -181,7 +191,6 @@ $(document).ready(function () {
                         }
                     }
                 }
-
 
                 $('#other_devices_list').html(s);
             }
