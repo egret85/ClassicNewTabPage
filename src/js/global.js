@@ -31,6 +31,7 @@ $(document).ready(function () {
         if ($recentlyClosedList.is(':visible')) {
             $recentlyClosedList.hide();
         }
+        $('#otherdevices-context-menu').hide();
     }
     $(".onclick-hides-menu").click(hideMenus);
 
@@ -69,6 +70,9 @@ $(document).ready(function () {
             // we must return false here or the hideMenus() function will be called again by the ".onclick-hides-menu" click handler
             // returning false here stops event propagation (the click event of all parent elements is not triggered)
             return false;
+        });
+        $('#other_devices_list').click(function (event) {
+            $('.otherdevices-context-menu').hide();
         });
     }
 
@@ -162,9 +166,9 @@ $(document).ready(function () {
                     // sessions are sorted with the most recent first
                     // TODO - VEH 2014/04/02: make each device's list collapsible like it was in the good old days
                     s += '<h3 id="h3-od-' + devices[i].info + '">' + devices[i].info + ' <button tabindex="-1" class="btn-menu drop-down" id="btn-dd-od-' + devices[i].info + '"></button>' + "\n" +
-                        '<menu class="otherdevices-context-menu"  id="menu-od-' + devices[i].info + '" hidden>' + "\n" +
+                        '<menu class="otherdevices-context-menu" id="menu-od-' + devices[i].info + '" style="display: none">' + "\n" +
                         '    <button id="btn-cl-od-' + devices[i].info + '">Collapse list</button>' + "\n" +
-                        '    <button id="btn-el-od-' + devices[i].info + '" hidden>Expand list</button>' + "\n" +
+                        '    <button id="btn-el-od-' + devices[i].info + '" style="display: none">Expand list</button>' + "\n" +
                         '    <button id="btn-oa-od-' + devices[i].info + '">Open all</button>' + "\n" +
                         '</menu>' + "\n" +
                         '<span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>' + "\n" +
@@ -190,7 +194,7 @@ $(document).ready(function () {
                             s += Mustache.to_html(
                                 templateStr,
                                 {
-                                    "title": ( tabs[j].title ? tabs[j].title : tabs[j].url.substr(0, 30) ),
+                                    "title": ( tabs[j].title ? tabs[j].title : tabs[j].url ),
                                     "url": tabs[j].url,
                                     "src": 'chrome://favicon/' + tabs[j].url
                                 }
@@ -204,23 +208,45 @@ $(document).ready(function () {
                 $('#other_devices_list').html(s);
 
                 // set actions for context menu
+                // use closure function scopes to hold on to the correct value of devices[i].info when the event is triggered
                 for (var i = 0; i < devices.length; i++) {
-                    $('#h3-od-' + devices[i].info).on('contextmenu', '.element', function (event) {
-                        toggle_otherdevices_contextmenu(devices[i].info);
-                    });
-                    $('#btn-dd-od-' + devices[i].info).click(function (event) {
-                        toggle_otherdevices_contextmenu(devices[i].info);
-                    });
-
-                    $('#btn-cl-od-' + devices[i].info).click(function (event) {
-                        collapse_otherdevices_content(devices[i].info);
-                    });
-                    $('#btn-el-od-' + devices[i].info).click(function (event) {
-                        expand_otherdevices_content(devices[i].info);
-                    });
-                    $('#btn-oa-od-' + devices[i].info).click(function (event) {
-                        openall_otherdevices_content(devices[i].info);
-                    });
+                    $('#h3-od-' + devices[i].info).on('contextmenu', 
+                        (function (deviceinfo) {
+                            return function (event) {
+                                toggle_otherdevices_contextmenu(deviceinfo);
+                                return false;    // return false to prevent normal context menu from showing
+                            };
+                        })(devices[i].info)
+                    );
+                    $('#btn-dd-od-' + devices[i].info).click(
+                        (function (deviceinfo) { 
+                            return function (event) {
+                                toggle_otherdevices_contextmenu(deviceinfo);
+                                return false;    // return false to prevent $('#other_devices_list').click from triggering, which would hide the context menu regardless
+                            };
+                        })(devices[i].info)
+                    );
+                    $('#btn-cl-od-' + devices[i].info).click(
+                        (function (deviceinfo) { 
+                            return function (event) {
+                                collapse_otherdevices_content(deviceinfo);
+                            };
+                        })(devices[i].info)
+                    );
+                    $('#btn-el-od-' + devices[i].info).click(
+                        (function (deviceinfo) { 
+                            return function (event) {
+                                expand_otherdevices_content(deviceinfo);
+                            };
+                        })(devices[i].info)
+                    );
+                    $('#btn-oa-od-' + devices[i].info).click(
+                        (function (deviceinfo) { 
+                            return function (event) {
+                                openall_otherdevices_content(deviceinfo);
+                            };
+                        })(devices[i].info)
+                    );
                 }
             }
         );
@@ -241,15 +267,19 @@ $(document).ready(function () {
 
     function collapse_otherdevices_content(deviceinfo) {
         $('#otherdevice-' + deviceinfo).hide();
+        $('#btn-cl-od-' + deviceinfo).hide();
+        $('#btn-el-od-' + deviceinfo).show();
     }
 
     function expand_otherdevices_content(deviceinfo) {
         $('#otherdevice-' + deviceinfo).show();
+        $('#btn-cl-od-' + deviceinfo).show();
+        $('#btn-el-od-' + deviceinfo).hide();
     }
 
     function openall_otherdevices_content(deviceinfo) {
         $('#otherdevice-' + deviceinfo + ' a').each(function (index) {
-            chrome.tabs.create({ 'url': $( this ).attr('href') });
+            chrome.tabs.create({ url: $( this ).attr('href') });
         });
     }
 
