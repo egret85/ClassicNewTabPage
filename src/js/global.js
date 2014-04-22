@@ -23,6 +23,12 @@ $(document).ready(function () {
         setOtherDevicesEvent();
     }
 
+    function hideOtherDevicesContextMenu() {
+        if ($('.otherdevices-context-menu').is(':visible')) {
+            $('.otherdevices-context-menu').hide();
+        }
+    }
+    $('#other_devices_list').click(hideOtherDevicesContextMenu);
     // Hide menus when clicking elements that have the class "onclick-hides-menu"
     function hideMenus() {
         if ($otherDevicesList.is(':visible')) {
@@ -31,7 +37,7 @@ $(document).ready(function () {
         if ($recentlyClosedList.is(':visible')) {
             $recentlyClosedList.hide();
         }
-        $('#otherdevices-context-menu').hide();
+        hideOtherDevicesContextMenu;
     }
     $(".onclick-hides-menu").click(hideMenus);
 
@@ -70,9 +76,6 @@ $(document).ready(function () {
             // we must return false here or the hideMenus() function will be called again by the ".onclick-hides-menu" click handler
             // returning false here stops event propagation (the click event of all parent elements is not triggered)
             return false;
-        });
-        $('#other_devices_list').click(function (event) {
-            $('.otherdevices-context-menu').hide();
         });
     }
 
@@ -262,7 +265,12 @@ $(document).ready(function () {
     }
 
     function toggle_otherdevices_contextmenu(deviceinfo) {
-        $('#menu-od-' + deviceinfo).toggle();
+        if (!$('#menu-od-' + deviceinfo).is(':visible')) {
+            hideOtherDevicesContextMenu();   // hide all other shown context menus
+            $('#menu-od-' + deviceinfo).toggle();
+        } else {
+            hideOtherDevicesContextMenu();   // hide all shown context menus
+        }
     }
 
     function collapse_otherdevices_content(deviceinfo) {

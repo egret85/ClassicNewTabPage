@@ -471,6 +471,7 @@ a:hover .filter {
 	bottom: 50px;
 	padding: 10px;
 	padding-right: 20px;
+	padding-bottom: 52px;
 	z-index: 900;
 	right: 100px;
 	border: 1px #ccc solid;
@@ -525,11 +526,25 @@ a:hover .filter {
 	overflow: hidden;
 }
 .otherdevices .otherdevices-context-menu {
-	position: relative;
+	position: absolute;
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .50);
+	background: white;
+	border-radius: 2px;
+	color: black;
+	cursor: default;
+	padding: 8px 0;
+	min-width: 150px;
 }
 .otherdevices .otherdevices-context-menu button {
 	display: block;
 	padding: 0 19px;
+	line-height: 18px;
+	width: 100%;
+	text-align: start;
+	z-index: 11;
+}
+.otherdevices .otherdevices-context-menu button:hover {
+	background: rgba(0, 0, 0, .06);
 }
 
 .spacer {
