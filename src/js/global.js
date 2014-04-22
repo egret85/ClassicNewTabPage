@@ -161,8 +161,14 @@ $(document).ready(function () {
                     // Add device title
                     // sessions are sorted with the most recent first
                     // TODO - VEH 2014/04/02: make each device's list collapsible like it was in the good old days
-                    s += '<h3>' + devices[i].info + ' <button tabindex="-1" class="btn-menu drop-down"></button> <span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>' + "\n" +
-						 '<section id="otherdevice-' + devices[i].info + '">';
+                    s += '<h3>' + devices[i].info + ' <button tabindex="-1" class="btn-menu drop-down"></button>' + "\n" +
+                        '<menu class="otherdevices-context-menu" hidden>' + "\n" +
+                        '    <button>Collapse list</button>' + "\n" +
+                        '    <button hidden>Expand list</button>' + "\n" +
+                        '    <button>Open all</button>' + "\n" +
+                        '</menu>' + "\n" +
+                        '<span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>' + "\n" +
+                         '<section id="otherdevice-' + devices[i].info + '">';
 
                     // loop trough sessions and add tabs to the local tabs array
                     for (var j = 0; j < devices[i].sessions.length; j++) {
@@ -192,7 +198,7 @@ $(document).ready(function () {
                         }
                     }
 
-					s += '</section>'
+                    s += '</section>'
                 }
 
                 $('#other_devices_list').html(s);

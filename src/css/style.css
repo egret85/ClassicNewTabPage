@@ -13,7 +13,9 @@ a {
 	text-decoration: none;
 	color: #333;
 }
-
+[hidden] {
+display: none !important;
+}
 
 /* Track */
 ::-webkit-scrollbar {
@@ -374,34 +376,34 @@ a:hover .filter {
 
 
 .btn_search {
-    background-color: #F5F5F5;
-    background-image: -webkit-linear-gradient(center top , #F5F5F5, #F1F1F1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 2px 2px 2px 2px;
-    color: #666666;
-    cursor: default;
-    font-family: arial,sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    height: 34px;
-    line-height: 27px;
-    margin: 11px 6px;
-    min-width: 54px;
-    padding: 0 8px;
-    text-align: center;
+	background-color: #F5F5F5;
+	background-image: -webkit-linear-gradient(center top , #F5F5F5, #F1F1F1);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 2px 2px 2px 2px;
+	color: #666666;
+	cursor: default;
+	font-family: arial,sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	height: 34px;
+	line-height: 27px;
+	margin: 11px 6px;
+	min-width: 54px;
+	padding: 0 8px;
+	text-align: center;
 	top:-1px; 
 	position:relative;
 }
 .btn_search:hover {
-    background-color: #F8F8F8;
-    background-image: -webkit-linear-gradient(center top , #F8F8F8, #F1F1F1);
-    border: 1px solid #C6C6C6;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    color: #333333;
+	background-color: #F8F8F8;
+	background-image: -webkit-linear-gradient(center top , #F8F8F8, #F1F1F1);
+	border: 1px solid #C6C6C6;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	color: #333333;
 }
 .btn_search:focus {
-    border: 1px solid #4D90FE;
-    outline: medium none;
+	border: 1px solid #4D90FE;
+	outline: medium none;
 }
 
 .btn-menu.drop-down {
@@ -418,9 +420,9 @@ a:hover .filter {
 }
 .btn-menu.drop-down[menu-shown],
 .btn-menu.drop-down:focus {
-  background-color: rgb(48, 57, 66);
-  background-image: -webkit-canvas(drop-down-arrow-active);
-  border-color: rgb(48, 57, 66);
+	background-color: rgb(48, 57, 66);
+	background-image: -webkit-canvas(drop-down-arrow-active);
+	border-color: rgb(48, 57, 66);
 }
 .lastclose {
 	position: fixed;
@@ -512,9 +514,24 @@ a:hover .filter {
 	font-weight: normal;
 }
 .otherdevices .details::before {
-  content: '\2013';  /* En-dash character. */
-  margin: 0 0.5em;
+	content: '\2013';  /* En-dash character. */
+	margin: 0 0.5em;
 }
+.otherdevices button {
+	background: transparent;
+	border: 0;
+	color: black;
+	outline: none;
+	overflow: hidden;
+}
+.otherdevices .otherdevices-context-menu {
+	position: relative;
+}
+.otherdevices .otherdevices-context-menu button {
+	display: block;
+	padding: 0 19px;
+}
+
 .spacer {
 	text-align: center;
 	margin: 50px 0 50px;
