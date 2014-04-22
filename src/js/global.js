@@ -46,7 +46,7 @@ $(document).ready(function () {
             } else {
                 hideMenus();
             }
-            
+
             // we must return false here or the hideMenus() function will be called again by the ".onclick-hides-menu" click handler
             // returning false here stops event propagation (the click event of all parent elements is not triggered)
             return false;
@@ -65,7 +65,7 @@ $(document).ready(function () {
             } else {
                 hideMenus();
             }
-            
+
             // we must return false here or the hideMenus() function will be called again by the ".onclick-hides-menu" click handler
             // returning false here stops event propagation (the click event of all parent elements is not triggered)
             return false;
@@ -161,11 +161,11 @@ $(document).ready(function () {
                     // Add device title
                     // sessions are sorted with the most recent first
                     // TODO - VEH 2014/04/02: make each device's list collapsible like it was in the good old days
-                    s += '<h3>' + devices[i].info + ' <button tabindex="-1" class="btn-menu drop-down"></button>' + "\n" +
-                        '<menu class="otherdevices-context-menu" hidden>' + "\n" +
-                        '    <button>Collapse list</button>' + "\n" +
-                        '    <button hidden>Expand list</button>' + "\n" +
-                        '    <button>Open all</button>' + "\n" +
+                    s += '<h3 id="h3-od-' + devices[i].info + '">' + devices[i].info + ' <button tabindex="-1" class="btn-menu drop-down" id="btn-dd-od-' + devices[i].info + '"></button>' + "\n" +
+                        '<menu class="otherdevices-context-menu"  id="menu-od-' + devices[i].info + '" hidden>' + "\n" +
+                        '    <button id="btn-cl-od-' + devices[i].info + '">Collapse list</button>' + "\n" +
+                        '    <button id="btn-el-od-' + devices[i].info + '" hidden>Expand list</button>' + "\n" +
+                        '    <button id="btn-oa-od-' + devices[i].info + '">Open all</button>' + "\n" +
                         '</menu>' + "\n" +
                         '<span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>' + "\n" +
                          '<section id="otherdevice-' + devices[i].info + '">';
@@ -198,10 +198,30 @@ $(document).ready(function () {
                         }
                     }
 
-                    s += '</section>'
+                    s += '</section>';
                 }
 
                 $('#other_devices_list').html(s);
+
+                // set actions for context menu
+                for (var i = 0; i < devices.length; i++) {
+                    $('#h3-od-' + devices[i].info).on('contextmenu', '.element', function (event) {
+                        toggle_otherdevices_contextmenu(devices[i].info);
+                    });
+                    $('#btn-dd-od-' + devices[i].info).click(function (event) {
+                        toggle_otherdevices_contextmenu(devices[i].info);
+                    });
+
+                    $('#btn-cl-od-' + devices[i].info).click(function (event) {
+                        collapse_otherdevices_content(devices[i].info);
+                    });
+                    $('#btn-el-od-' + devices[i].info).click(function (event) {
+                        expand_otherdevices_content(devices[i].info);
+                    });
+                    $('#btn-oa-od-' + devices[i].info).click(function (event) {
+                        openall_otherdevices_content(devices[i].info);
+                    });
+                }
             }
         );
     }
@@ -213,6 +233,24 @@ $(document).ready(function () {
 
     function enableOtherDevices() {
         $menuOtherDevices.show();
+    }
+
+    function toggle_otherdevices_contextmenu(deviceinfo) {
+        $('#menu-od-' + deviceinfo).toggle();
+    }
+
+    function collapse_otherdevices_content(deviceinfo) {
+        $('#otherdevice-' + deviceinfo).hide();
+    }
+
+    function expand_otherdevices_content(deviceinfo) {
+        $('#otherdevice-' + deviceinfo).show();
+    }
+
+    function openall_otherdevices_content(deviceinfo) {
+        $('#otherdevice-' + deviceinfo + ' a').each(function (index) {
+            chrome.tabs.create({ 'url': $( this ).attr('href') });
+        });
     }
 
 

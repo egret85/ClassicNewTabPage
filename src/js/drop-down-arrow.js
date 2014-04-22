@@ -31,9 +31,6 @@
    * CSS class 'drop-down'.
    */
  
-    createDropDownArrowCanvas(
-        'drop-down-arrow', ARROW_WIDTH, ARROW_HEIGHT, NORMALCOLOR);
-    createDropDownArrowCanvas(
-        'drop-down-arrow-hover', ARROW_WIDTH, ARROW_HEIGHT, HOVERCOLOR);
-    createDropDownArrowCanvas(
-        'drop-down-arrow-active', ARROW_WIDTH, ARROW_HEIGHT, ACTIVECOLOR);
+    createDropDownArrowCanvas('drop-down-arrow', ARROW_WIDTH, ARROW_HEIGHT, NORMALCOLOR);
+    createDropDownArrowCanvas('drop-down-arrow-hover', ARROW_WIDTH, ARROW_HEIGHT, HOVERCOLOR);
+    createDropDownArrowCanvas('drop-down-arrow-active', ARROW_WIDTH, ARROW_HEIGHT, ACTIVECOLOR);
