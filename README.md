@@ -25,9 +25,9 @@ It should be noted that the ant build will create a new signing key for Chrome i
 ### Ant
 The build system is made in ant and require ant and java to be installed.
 
- * `ant all` -- Build everything below except for the styles.
+ * `ant all` -- Cleans and builds the packaged Chrome extension (.crx).
  * `ant devnumber` -- Increment the build number.
- * `ant chrome` -- Build the packaged Chrome extension (.crx)
+ * `ant chrome` -- Build the packaged Chrome extension (.crx).
  * `ant dev` -- Build the Chrome extension as a folder for development.
 
 ### Build Properties (build.properties)
