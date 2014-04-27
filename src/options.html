@@ -1,8 +1,12 @@
 <!doctype html>
-<meta charset="utf-8" xmlns="http://www.w3.org/1999/html">
-<title>Options &mdash; Classic New Tab Page for Chrome</title>
-<link rel="stylesheet" href="css/options.css">
+<html>
+<head>
+    <meta charset="utf-8" xmlns="http://www.w3.org/1999/html">
+    <title>Options &mdash; Classic New Tab Page for Chrome</title>
+    <link rel="stylesheet" href="css/options.css">
+</head>
 
+<body>
 <div class="wrapper">
     <header>
         <menu>
@@ -20,15 +24,19 @@
         <div class="field">
             <h2 for="site">Background Image</h2>
             <fieldset>
-                <div class="checkbox">
-                    <input type="file" id="background">
+                <input type="file" id="backgroundInput">
+                <span id="backgroundError" class="error" style="display: none"></span>
+
+                <div id="backgroundCurrent" style="display: none">
+                    <div id="backgroundPreview" class="marginBottom"></div>
+                    <a id="clearButton" class="button" href="#">Clear</a>
                 </div>
             </fieldset>
         </div>
         <div class="field">
             <h2></h2>
             <fieldset>
-                <a class="submit saved" href="#">Saved</a>
+                <a id="saveButton" class="submit saved" href="#">Saved</a>
             </fieldset>
         </div>
     </div>
@@ -36,3 +44,5 @@
 
 <script src="js/jquery-2.1.0.min.js"></script>
 <script src="js/options.js"></script>
+</body>
+</html>

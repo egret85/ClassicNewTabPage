@@ -321,11 +321,18 @@ td
     padding: 1em 1.5em;
 }
 
-.button
+.marginBottom
 {
+   margin-bottom: 1em;
+}
+
+.button, input[type="file"]::-webkit-file-upload-button
+{
+    display: inline-block;
+    margin-right: 0.5em;
     text-decoration: none;
     border: none;
-    background: #54982f;
+    background: #888;
     border-radius: 3px;
     padding: 1em 1.5em;
     color: white;
@@ -336,20 +343,20 @@ td
     transition: background .1s linear;
 }
 
-.button:visited
+.button:visited, input[type="file"]::-webkit-file-upload-button:visited
 {
     color: white;
 }
 
-.button:hover
+.button:hover, input[type="file"]::-webkit-file-upload-button:hover
 {
-    background: #61b036;
+    background: #777777;
     color: white;
 }
 
-.button:active
+.button:active, input[type="file"]::-webkit-file-upload-button:active
 {
-    background: #89cf63;
+    background: #999;
     color: white;
 }
 
