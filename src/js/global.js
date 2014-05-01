@@ -175,7 +175,7 @@ $(document).ready(function () {
                         '    <button id="btn-oa-od-' + devices[i].info + '">Open all</button>' + "\n" +
                         '</menu>' + "\n" +
                         '<span class="details">' + $.timeago(new Date(devices[i].sessions[0].lastModified*1000)) + '</span></h3>' + "\n" +
-                         '<section id="otherdevice-' + devices[i].info + '">';
+                         '<section id="otherdevice-' + devices[i].info + '" class="section-od">';
 
                     // loop trough sessions and add tabs to the local tabs array
                     for (var j = 0; j < devices[i].sessions.length; j++) {
@@ -263,6 +263,12 @@ $(document).ready(function () {
     function enableOtherDevices() {
         $menuOtherDevices.show();
     }
+    function update_otherdevices_bottompadding() {
+        var newpadding = $('.otherdevices-context-menu:last').outerHeight();
+        if ($('.section-od:last').is(':visible'))
+            newpadding -= $('.section-od:last').outerHeight();
+        $('#other_devices_list').css('padding-bottom', Math.max(10, newpadding) + 'px');
+    }
 
     function toggle_otherdevices_contextmenu(deviceinfo) {
         if (!$('#menu-od-' + deviceinfo).is(':visible')) {
@@ -277,12 +283,14 @@ $(document).ready(function () {
         $('#otherdevice-' + deviceinfo).hide();
         $('#btn-cl-od-' + deviceinfo).hide();
         $('#btn-el-od-' + deviceinfo).show();
+        update_otherdevices_bottompadding();
     }
 
     function expand_otherdevices_content(deviceinfo) {
         $('#otherdevice-' + deviceinfo).show();
         $('#btn-cl-od-' + deviceinfo).show();
         $('#btn-el-od-' + deviceinfo).hide();
+        update_otherdevices_bottompadding();
     }
 
     function openall_otherdevices_content(deviceinfo) {
