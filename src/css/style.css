@@ -5,7 +5,7 @@
 html, body {
 	overflow: auto;
 	font-size: 12px;
-	font-family: 'Segoe UI', Arial, 'Microsoft Yahei', Simsun, sans-serif;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
 	min-width: 700px;
 	height: 100%;
 }
@@ -275,15 +275,24 @@ a:hover .filter {
 .menu_container a {
 	padding-left: 15px;
 }
+.menu_container > button{
+	display:-webkit-box;
+	border: none;
+	outline: none;
+	background-color: inherit;
+	color: #333;
+	font-weight: inherit;
+	cursor: inherit;
+}
+.menu_container button {
+	padding-left: 15px;
+}
 .menu_container .txt, .menu_container .ic {
 	display: inline-block;
 	height: 24px;
 	-webkit-box-orient: vertical;
 	display: -webkit-box;
 	line-height: 24px;
-}
-.menu_container .ic {
-	margin-left: 8px;
 }
 .menu_container:last-child {
 	margin-right: 10px;
@@ -403,7 +412,21 @@ a:hover .filter {
 	outline: medium none;
 }
 
-.btn-menu.drop-down {
+.btn-menu .ic {
+	background-image: -webkit-canvas(drop-down-arrow);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 8px;
+	width: 24px;
+}
+.btn-menu:hover .ic{
+	background-image: -webkit-canvas(drop-down-arrow-hover);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 8px;
+}
+
+.btn-context.drop-down {
 	background: white -webkit-canvas(drop-down-arrow) no-repeat center 4px;
 	border: 1px solid rgb(192, 195, 198);
 	border-radius: 2px;
@@ -411,12 +434,12 @@ a:hover .filter {
 	width: 12px;
 	margin: 0 5px;
 }
-.btn-menu.drop-down:hover{
+.btn-context.drop-down:hover{
 	background: white -webkit-canvas(drop-down-arrow-hover) no-repeat center 4px;
 	border-color: rgb(48, 57, 66);
 }
-.btn-menu.drop-down[menu-shown],
-.btn-menu.drop-down:focus {
+.btn-context.drop-down[menu-shown],
+.btn-context.drop-down:focus {
 	background-color: rgb(48, 57, 66);
 	background-image: -webkit-canvas(drop-down-arrow-active);
 	border-color: rgb(48, 57, 66);

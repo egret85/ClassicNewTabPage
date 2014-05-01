@@ -168,7 +168,7 @@ $(document).ready(function () {
                     // Add device title
                     // sessions are sorted with the most recent first
                     // TODO - VEH 2014/04/02: make each device's list collapsible like it was in the good old days
-                    s += '<h3 id="h3-od-' + devices[i].info + '">' + devices[i].info + ' <button tabindex="-1" class="btn-menu drop-down" id="btn-dd-od-' + devices[i].info + '"></button>' + "\n" +
+                    s += '<h3 id="h3-od-' + devices[i].info + '">' + devices[i].info + ' <button tabindex="-1" class="btn-context drop-down" id="btn-dd-od-' + devices[i].info + '"></button>' + "\n" +
                         '<menu class="otherdevices-context-menu" id="menu-od-' + devices[i].info + '" style="display: none">' + "\n" +
                         '    <button id="btn-cl-od-' + devices[i].info + '">Collapse list</button>' + "\n" +
                         '    <button id="btn-el-od-' + devices[i].info + '" style="display: none">Expand list</button>' + "\n" +
