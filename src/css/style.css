@@ -429,7 +429,7 @@ a:hover .filter {
 .otherdevices {
 	position: fixed;
 	bottom: 50px;
-	padding: 10px;
+	padding: 10px;  /* if you change this, also change it in "update_otherdevices_bottompadding()" in global.js */
 	padding-right: 20px;
 	z-index: 900;
 	right: 100px;
@@ -437,7 +437,7 @@ a:hover .filter {
 	background: #fff;
 	-webkit-box-shadow: 1px 2px 2px rgba(0,0,0,.2);
 	display: none;
-	max-height: 400px;
+	max-height: 400px;  /* if you change this, also change it in "update_otherdevices_bottompadding()" in global.js */
 	max-width: 450px;
 	min-width: 150px;
 	overflow: auto;

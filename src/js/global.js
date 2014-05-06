@@ -264,10 +264,18 @@ $(document).ready(function () {
         $menuOtherDevices.show();
     }
     function update_otherdevices_bottompadding() {
+		// the values below should ideally be the same as the values in the css
+		const default_bottompadding = 10;
+		const default_maxheight = 400;
+		
         var newpadding = $('.otherdevices-context-menu:last').outerHeight();
         if ($('.section-od:last').is(':visible'))
             newpadding -= $('.section-od:last').outerHeight();
-        $('#other_devices_list').css('padding-bottom', Math.max(10, newpadding) + 'px');
+        $('#other_devices_list').css('padding-bottom', Math.max(default_bottompadding, newpadding) + 'px');
+		
+		// actual max size of the box is the max-height + the padding, so adapt this as well to keep the total size the same
+        var newmaxheight = default_maxheight + default_bottompadding - Math.max(default_bottompadding, newpadding);
+        $('#other_devices_list').css('max-height', newmaxheight + 'px');
     }
 
     function toggle_otherdevices_contextmenu(deviceinfo) {
