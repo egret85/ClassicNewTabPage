@@ -35,8 +35,8 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab)
     {
         for (var i = 0; i < _topsites.length; i++)
         {
-            var tab_url = tab.url.replace(/https?:\/\/(www\.)?/g, ''),
-                topsite_url = _topsites[i].url.replace(/https?:\/\/(www\.)?/g, '');
+            var tab_url = tab.url.replace(/^https?:\/\/(www\.)?/g, ''),
+                topsite_url = _topsites[i].url.replace(/^https?:\/\/(www\.)?/g, '');
             if (URI(tab_url).equals(topsite_url))
             {
                 chrome.tabs.captureVisibleTab(tab.windowId, {"format": "png"}, function (dataUrl)
