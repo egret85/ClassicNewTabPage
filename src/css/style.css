@@ -5,14 +5,14 @@
 html, body {
 	overflow: auto;
 	font-size: 12px;
-	font-family: 'Segoe UI', Arial, 'Microsoft Yahei', Simsun, sans-serif;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
 	min-width: 700px;
+	height: 100%;
 }
 a {
 	text-decoration: none;
 	color: #333;
 }
-
 
 /* Track */
 ::-webkit-scrollbar {
@@ -36,6 +36,7 @@ background:#525252;
 .ch_body, #Wrapper {
 	left: 0;
 	top: 0;
+	padding-top: 156px;
 	width: 100%;
 	-webkit-transition: all .2s ease-in-out;
 }
@@ -274,15 +275,24 @@ a:hover .filter {
 .menu_container a {
 	padding-left: 15px;
 }
+.menu_container > button{
+	display:-webkit-box;
+	border: none;
+	outline: none;
+	background-color: inherit;
+	color: #333;
+	font-weight: inherit;
+	cursor: inherit;
+}
+.menu_container button {
+	padding-left: 15px;
+}
 .menu_container .txt, .menu_container .ic {
 	display: inline-block;
 	height: 24px;
 	-webkit-box-orient: vertical;
 	display: -webkit-box;
 	line-height: 24px;
-}
-.menu_container .ic {
-	margin-left: 8px;
 }
 .menu_container:last-child {
 	margin-right: 10px;
@@ -342,66 +352,38 @@ a:hover .filter {
 	margin-top: -23px;
 }
 
-.btn_search {
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f1f1f1));
-	background-image: -webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-	background-color: #f8f8f8;
-	background-image: linear-gradient(top, #f8f8f8, #f1f1f1);
-	background-image: -o-linear-gradient(top, #f8f8f8, #f1f1f1);
-	border: 1px solid #c6c6c6;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-	color: #333;
-	cursor: default;
-	font-family: arial, sans-serif;
-	font-size: 11px;
-	font-weight: bold;
-	height: 34px;
-	line-height: 27px;
-	margin: 11px 6px;
-	min-width: 54px;
-	padding: 0 8px;
-	text-align: center;
-	top:-1px; 
-	position:relative;
+.btn-menu .ic {
+	background-image: -webkit-canvas(drop-down-arrow);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 8px;
+	width: 24px;
 }
-.btn_search:hover {
-	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-	box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+.btn-menu:hover .ic{
+	background-image: -webkit-canvas(drop-down-arrow-hover);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 8px;
 }
 
-
-.btn_search {
-    background-color: #F5F5F5;
-    background-image: -webkit-linear-gradient(center top , #F5F5F5, #F1F1F1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 2px 2px 2px 2px;
-    color: #666666;
-    cursor: default;
-    font-family: arial,sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    height: 34px;
-    line-height: 27px;
-    margin: 11px 6px;
-    min-width: 54px;
-    padding: 0 8px;
-    text-align: center;
-	top:-1px; 
-	position:relative;
+.btn-context.drop-down {
+	background: white -webkit-canvas(drop-down-arrow) no-repeat center 4px;
+	border: 1px solid rgb(192, 195, 198);
+	border-radius: 2px;
+	height: 12px;
+	width: 12px;
+	margin: 0 5px;
 }
-.btn_search:hover {
-    background-color: #F8F8F8;
-    background-image: -webkit-linear-gradient(center top , #F8F8F8, #F1F1F1);
-    border: 1px solid #C6C6C6;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    color: #333333;
+.btn-context.drop-down:hover{
+	background: white -webkit-canvas(drop-down-arrow-hover) no-repeat center 4px;
+	border-color: rgb(48, 57, 66);
 }
-.btn_search:focus {
-    border: 1px solid #4D90FE;
-    outline: medium none;
+.btn-context.drop-down[menu-shown],
+.btn-context.drop-down:focus {
+	background-color: rgb(48, 57, 66);
+	background-image: -webkit-canvas(drop-down-arrow-active);
+	border-color: rgb(48, 57, 66);
 }
-
 .lastclose {
 	position: fixed;
 	bottom: 50px;
@@ -412,10 +394,16 @@ a:hover .filter {
 	background: #fff;
 	-webkit-box-shadow: 1px 2px 2px rgba(0,0,0,.2);
 	display: none;
+	max-height: 400px;
+	max-width: 450px;
+	min-width: 150px;
+	overflow: auto;
 }
 .lastclose a {
 	display: block;
 	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
 	line-height: 16px;
 	color: #063774;
 }
@@ -441,19 +429,24 @@ a:hover .filter {
 .otherdevices {
 	position: fixed;
 	bottom: 50px;
-	padding: 10px;
+	padding: 10px;  /* if you change this, also change it in "update_otherdevices_bottompadding()" in global.js */
+	padding-right: 20px;
 	z-index: 900;
 	right: 100px;
 	border: 1px #ccc solid;
 	background: #fff;
 	-webkit-box-shadow: 1px 2px 2px rgba(0,0,0,.2);
 	display: none;
-	max-height: 400px;
+	max-height: 400px;  /* if you change this, also change it in "update_otherdevices_bottompadding()" in global.js */
+	max-width: 450px;
+	min-width: 150px;
 	overflow: auto;
+	white-space: nowrap;
 }
 .otherdevices a {
 	display: block;
 	overflow: hidden;
+	text-overflow: ellipsis;
 	line-height: 16px;
 	color: #063774;
 }
@@ -480,12 +473,41 @@ a:hover .filter {
 	font-style: italic;
 	font-weight: normal;
 }
+.otherdevices .details::before {
+	content: '\2013';  /* En-dash character. */
+	margin: 0 0.5em;
+}
+.otherdevices button {
+	background: transparent;
+	border: 0;
+	color: black;
+	outline: none;
+	overflow: hidden;
+}
+.otherdevices .otherdevices-context-menu {
+	position: absolute;
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .50);
+	background: white;
+	border-radius: 2px;
+	color: black;
+	cursor: default;
+	padding: 8px 0;
+	min-width: 150px;
+}
+.otherdevices .otherdevices-context-menu button {
+	display: block;
+	padding: 0 19px;
+	line-height: 18px;
+	width: 100%;
+	text-align: start;
+	z-index: 11;
+}
+.otherdevices .otherdevices-context-menu button:hover {
+	background: rgba(0, 0, 0, .06);
+}
 
-.spacer {
-	text-align: center;
-	margin: 50px 0 50px;
-	height: 56px;
-	position:relative;
+.onclick-hides-menu {
+	height: 100%;
 }
 .footer {
 	position: fixed;
