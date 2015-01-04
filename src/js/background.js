@@ -121,7 +121,6 @@ function resizeImage(url, destWidth, destHeight, callback)
         var cropX = Math.round(lastWidth) - destWidth;
         finalCanvas.getContext("2d").drawImage(canvas, Math.round(cropX / 2), 0, Math.round(lastWidth), Math.round(lastHeight), 0, 0, Math.round(lastWidth), Math.round(lastHeight));
         var endTime = new Date().getTime();
-        console.log("execution time: " + ( endTime - start) + "ms. scale per frame: " + scale + " scaling step count: " + scalingSteps);
 
         // Convert the canvas to a data URL in PNG format
         callback(finalCanvas.toDataURL());
