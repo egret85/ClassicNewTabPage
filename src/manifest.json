@@ -4,7 +4,7 @@
     "manifest_version": 2,
     "description": "Classic New Tab Page is an extension the brings back the Classic Chrome New Tab Page.",
     "background": {
-        "scripts": [ "js/analytics.js", "js/URI.min.js", "js/config.js", "js/background.js" ]
+        "scripts": [ "js/URI.min.js", "js/config.js", "js/background.js" ]
     },
     "chrome_url_overrides": {
         "newtab": "index.html"
