@@ -297,6 +297,12 @@ a:hover .filter {
 .menu_container:last-child {
 	margin-right: 10px;
 }
+#menu_otherDevices span {
+	float: left;
+}
+#menu_recentlyClosed span {
+	float: left;
+}
 .login_status {
 	position: absolute;
 	right: 5px;
